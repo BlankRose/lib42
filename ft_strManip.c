@@ -6,58 +6,58 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:29:42 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/21 15:11:28 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/22 14:37:17 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *s)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 		i++;
 	return (i);
 }
 
-int	ft_strlcpy(char *dest, char *src, int length)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (src[i] && i < length)
+	while (src[i] && i < dstsize)
 	{
-		dest[i] = src[i];
+		dst[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
+	dst[i] = '\0';
 	return (i);
 }
 
-int	ft_strlcat(char *dest, char *src, int length)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int		i;
-	int		y;
+	size_t	i;
+	size_t	y;
 
 	i = 0;
-	y = ft_strlen(dest);
-	while (src[i] && i < length)
+	y = ft_strlen(dst);
+	while (src[i] && i < dstsize)
 	{
-		dest[y + i] = src[i];
+		dst[y + i] = src[i];
 		i++;
 	}
-	dest[y + i] = '\0';
+	dst[y + i] = '\0';
 	return (y + i);
 }
 
-int	ft_strncmp(char *s1, char *s2, int length)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
-	while (i < length && s1[i] == s2[i])
+	while (i < n && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
 }

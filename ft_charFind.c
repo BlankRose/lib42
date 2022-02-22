@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:32:22 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/21 15:12:31 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/22 11:25:54 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,51 +26,51 @@ int	ft_tolower(int c)
 	return (c);
 }
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int		i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == c)
-			return (&str[i]);
+		if (s[i] == c)
+			return ((char *) &s[i]);
 		i++;
 	}
-	return (&str[i]);
+	return ((char *) &s[i]);
 }
 
-char	*ft_strrchr(char *str, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*y;
-	int		i;
+	const char	*y;
+	int			i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == c)
-			y = &str[i];
+		if (s[i] == c)
+			y = &s[i];
 		i++;
 	}
 	if (y)
-		return (y);
-	return (&str[i]);
+		return ((char *) y);
+	return ((char *) &s[i]);
 }
 
-char	*strnstr(char *str, char *find, int length)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int		i;
-	int		y;
+	size_t	i;
+	size_t	y;
 
 	i = 0;
-	if (!ft_strlen(find))
-		return (str);
-	while (str[i] && i < length)
+	if (!ft_strlen(needle))
+		return ((char *) haystack);
+	while (haystack[i] && i < len)
 	{
 		y = 0;
-		while (str[i + y] == find[y])
-			if (!find[++y])
-				return (&str[i]);
+		while (haystack[i + y] == needle[y])
+			if (!needle[++y])
+				return ((char *) &haystack[i]);
 		i++;
 	}
 	return (0);

@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert.c                                       :+:      :+:    :+:   */
+/*   ft_output.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:49:56 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 11:11:47 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/22 19:03:18 by flcollar          #+#    #+#             */
+/*   Updated: 2022/02/22 19:11:29 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_putchar_fd(char c, int fd)
 {
-	int		result;
-	int		sign;
-	int		i;
+	write(fd, &c, 1);
+}
 
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
-			sign = -sign;
-	result = 0;
-	while (ft_isdigit(str[i]))
-		result = (result * 10) + (str[i] - '0');
-	return (result);
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	unsigned int	nb;
+	char			c;
+
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	nb = n;
+	c = (nb % 10) + '0';
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	write(fd, &c, 1);
 }

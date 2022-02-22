@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert.c                                       :+:      :+:    :+:   */
+/*   ft_memManip2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:49:56 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 11:11:47 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/22 10:43:43 by flcollar          #+#    #+#             */
+/*   Updated: 2022/02/22 11:42:30 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	int		result;
-	int		sign;
-	int		i;
+	size_t		i;
+	char		*str;
 
 	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
-			sign = -sign;
-	result = 0;
-	while (ft_isdigit(str[i]))
-		result = (result * 10) + (str[i] - '0');
-	return (result);
+	str = (char *) s;
+	while (i < n)
+		str[i++] = '\0';
 }

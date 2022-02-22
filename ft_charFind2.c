@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert.c                                       :+:      :+:    :+:   */
+/*   ft_charFind2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:49:56 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 11:11:47 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/22 17:30:46 by flcollar          #+#    #+#             */
+/*   Updated: 2022/02/22 18:36:24 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+size_t	ft_strlstr(const char *haystack, const char *needle, size_t len)
 {
-	int		result;
-	int		sign;
-	int		i;
+	size_t	found;
+	char	*y;
+
+	found = 0;
+	y = ft_strnstr(haystack, needle, len);
+	while (y)
+	{
+		found++;
+		y = ft_strnstr(&y[1], needle, len);
+	}
+	return (found);
+}
+
+size_t	ft_strnchr(const char *s, int c)
+{
+	size_t	len;
+	size_t	i;
 
 	i = 0;
-	while (ft_isspace(str[i]))
+	len = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			len++;
 		i++;
-	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
-		if (str[i++] == '-')
-			sign = -sign;
-	result = 0;
-	while (ft_isdigit(str[i]))
-		result = (result * 10) + (str[i] - '0');
-	return (result);
+	}
+	return (len);
 }
