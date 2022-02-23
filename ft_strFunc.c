@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_maths.c                                         :+:      :+:    :+:   */
+/*   ft_strFunc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 12:43:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/23 11:30:06 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/23 10:08:04 by flcollar          #+#    #+#             */
+/*   Updated: 2022/02/23 10:44:08 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_vector3	ft_vector3_new(int x, int y, int z)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	t_vector3	vector;
+	unsigned int	i;
+	char			*str;
 
-	vector.x = x;
-	vector.y = y;
-	vector.z = z;
-	return (vector);
-}
-
-int	ft_clamp(int x, int min, int max)
-{
-	if (x < min)
-		return (min);
-	if (x > max)
-		return (max);
-	return (x);
-}
-
-size_t	ft_nbrlen(unsigned int x)
-{
-	size_t	i;
-
-	i = 1;
-	while (x > 9)
+	str = (char *) malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!str)
+		return (0);
+	i = 0;
+	while (s[i])
 	{
-		x /= 10;
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	return (i);
+	return (str);
+}
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

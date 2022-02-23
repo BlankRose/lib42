@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:59:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 18:59:47 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/23 11:20:20 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,30 +72,5 @@ char	*ft_strtrim(const char *s1, const char *set)
 			r[y++] = s1[i++];
 	}
 	r[y] = '\0';
-	return (r);
-}
-
-char	**ft_split(const char *s, char c)
-{
-	size_t	len;
-	size_t	i;
-	int		y;
-	char	**r;
-
-	len = ft_strnchr(s, c) + 1;
-	r = (char **) malloc((len + 1) * sizeof(char));
-	if (!r)
-		return (0);
-	i = 0;
-	y = -1;
-	/*while (s[i])
-	{
-		if (i == 0 || s[i] == c)
-		{
-			r[++y] = (char *) malloc();
-		}
-		i++;
-	}*/
-	r[y] = 0;
 	return (r);
 }

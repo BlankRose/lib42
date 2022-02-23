@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:32:22 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 11:25:54 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/23 12:36:05 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	while (haystack[i] && i < len)
 	{
 		y = 0;
-		while (haystack[i + y] == needle[y])
+		while (haystack[i + y] == needle[y] && (i + y) < len)
 			if (!needle[++y])
 				return ((char *) &haystack[i]);
 		i++;
