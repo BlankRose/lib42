@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:29:42 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 14:37:17 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/23 18:16:10 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,34 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
-	while (src[i] && i < dstsize)
+	while (src[i] && i < dstsize - 1 && dstsize > 0)
 	{
 		dst[i] = src[i];
 		i++;
 	}
 	dst[i] = '\0';
-	return (i);
+	return (ft_strlen(src));
 }
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	y;
+	size_t	z;
 
+	z = ft_strlen(dst);
 	i = 0;
-	y = ft_strlen(dst);
-	while (src[i] && i < dstsize)
+	y = z;
+	while (src[i] && z < dstsize - 1 && dstsize > 0)
 	{
 		dst[y + i] = src[i];
 		i++;
+		z++;
 	}
 	dst[y + i] = '\0';
-	return (y + i);
+	if (z > dstsize)
+		return (ft_strlen(src) + dstsize);
+	return (ft_strlen(src) + y);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -57,7 +62,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	size_t	i;
 
 	i = 0;
-	while (i < n && s1[i] == s2[i])
+	while (i + 1 < n && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
 }

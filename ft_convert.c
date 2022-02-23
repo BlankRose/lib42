@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 15:49:56 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/23 10:05:10 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:48:22 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	ft_atoi(const char *str)
 			sign = -sign;
 	result = 0;
 	while (ft_isdigit(str[i]))
-		result = (result * 10) + (str[i] - '0');
-	return (result);
+		result = (result * 10) + (str[i++] - '0');
+	return (result * sign);
 }
 
-char	*ft_itoa2(char *str, unsigned int nbr, size_t i)
+static char	*ft_itoa2(char *str, unsigned int nbr, size_t i)
 {
 	str[i--] = (nbr % 10) + '0';
 	while (nbr > 9)
