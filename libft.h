@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/23 11:33:43 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/24 10:36:27 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			ft_tolower(int c);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t		ft_strlen(const char *s);
+size_t		ft_strlenlimit(const char *s, char c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 /* Warning: Requierds 'malloc' below! */
 char		*ft_strdup(const char *s1);

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:29:42 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/23 18:16:10 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/24 10:36:00 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ size_t	ft_strlen(const char *s)
 
 	i = 0;
 	while (s[i])
+		i++;
+	return (i);
+}
+
+size_t	ft_strlenlimit(const char *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
 		i++;
 	return (i);
 }

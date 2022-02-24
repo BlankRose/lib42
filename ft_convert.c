@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 15:49:56 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/23 16:48:22 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:03:03 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ char	*ft_itoa(int n)
 	len = 0;
 	if (n < 0)
 	{
-		n = -n;
 		len++;
+		nbr = -n;
 	}
-	nbr = n;
+	else
+		nbr = n;
 	len += ft_nbrlen(nbr);
 	str = (char *) malloc((len + 1) * sizeof(char));
 	if (!str)
