@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:32:22 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/23 12:36:05 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:19:47 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *) &s[i]);
 		i++;
 	}
-	return ((char *) &s[i]);
+	if (c == '\0')
+		return ((char *) &s[i]);
+	return (0);
 }
 
 char	*ft_strrchr(const char *s, int c)
@@ -46,15 +48,18 @@ char	*ft_strrchr(const char *s, int c)
 	int			i;
 
 	i = 0;
+	y = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
 			y = &s[i];
 		i++;
 	}
+	if (c == '\0')
+		return ((char *) &s[i]);
 	if (y)
 		return ((char *) y);
-	return ((char *) &s[i]);
+	return (0);
 }
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)

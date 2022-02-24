@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:08:02 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 14:01:09 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:34:13 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	*ft_calloc(size_t count, size_t size)
 	i = malloc(count * size);
 	if (!i)
 		return (0);
+	ft_bzero(i, count * size);
 	return (i);
 }
