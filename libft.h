@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/24 10:36:27 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/02/25 16:56:25 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_isspace(int c);
+int			ft_isset(int c, const char *set);
 
 // CHAR FINDER
 size_t		ft_strnchr(const char *s, int c);
