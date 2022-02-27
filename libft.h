@@ -14,7 +14,12 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <unistd.h>
+
+# ifdef _WIN32
+#  include <io.h>
+# else
+#  include <unistd.h>
+# endif
 
 typedef struct s_vector3 {
 	int		x;
@@ -29,7 +34,6 @@ int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_isspace(int c);
-int			ft_isset(int c, const char *set);
 
 // CHAR FINDER
 size_t		ft_strnchr(const char *s, int c);

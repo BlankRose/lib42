@@ -12,34 +12,51 @@
 
 #include "libft.h"
 
-static char	**ft_split_error(char **res)
+static char	**ft_split_error(char **res, size_t i)
 {
-	size_t	i;
-
-	i = 0;
-	while (res[i])
-		free(res[i++]);
+	while (i)
+		free(res[--i]);
 	free(res);
 	return (0);
 }
 
-static char	**ft_split2(const char *s, char c, char **res, size_t n)
+static size_t	ft_split_size(const char *s, char c)
 {
 	size_t	len;
 	size_t	i;
 
 	i = 0;
 	len = 0;
-	while (i < n)
+	while (s[i++])
 	{
-		len = ft_strlenlimit(s, c);
-		res[i] = (char *) malloc((len + 1) * sizeof(char));
+		while (s[i] != c && s[i])
+			i++;
+		len++;
+		while (s[i] == c && s[i])
+			i++;
+	}
+	return (len);
+}
+
+static char	**ft_split2(const char *s, char c, char **res)
+{
+	size_t	len;
+	size_t	i;
+	size_t	y;
+
+	i = 0;
+	y = 0;
+	while (s[y])
+	{
+		len = 0;
+		while (s[y] != c && s[y] && ++y)
+			len++;
+		res[i] = malloc(len + 1);
 		if (!res[i])
-			return (ft_split_error(res));
-		ft_strlcpy(res[i], s, len + 1);
-		if (s[len + 1])
-			s = &s[len + 1];
-		i++;
+			return (ft_split_error(res, i));
+		ft_strlcpy(res[i++], &s[y - len], len + 1);
+		while (s[y] == c && s[y])
+			y++;
 	}
 	res[i] = 0;
 	return (res);
@@ -47,12 +64,14 @@ static char	**ft_split2(const char *s, char c, char **res, size_t n)
 
 char	**ft_split(const char *s, char c)
 {
-	size_t	len;
 	char	**r;
 
-	len = ft_strnchr(s, c) + 1;
-	r = (char **) malloc((len + 1) * sizeof(char *));
+	if (!s)
+		return (0);
+	while (*s == c && *s)
+		s++;
+	r = (char **)malloc(sizeof(char *) * (ft_split_size(s, c) + 1));
 	if (!r)
 		return (0);
-	return (ft_split2(s, c, r, len));
+	return (ft_split2(s, c, r));
 }

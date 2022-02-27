@@ -55,18 +55,22 @@ char	*ft_strjoin(const char *s1, const char *s2)
 char	*ft_strtrim(const char *s1, const char *set)
 {
 	char	*r;
-	int		y;
-	int		i;
+	size_t	len;
+	size_t	i;
 
 	i = 0;
-	while (ft_isset(s1[i], set))
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
-	y = ft_strlen(s1) - 1;
-	while (ft_isset(s1[y], set))
-		y--;
-	r = (char *) malloc(((y - i) + 1) * sizeof(char));
+	len = ft_strlen(s1);
+	while (len > 0 && ft_strchr(set, s1[len - 1]))
+		len--;
+	r = malloc(len + 1);
 	if (!r)
-		return (0);
-	ft_strlcpy(r, &s1[i], (y - i) + 1);
+		return (NULL);
+	ft_strlcpy(r, s1, len + 1);
 	return (r);
 }
