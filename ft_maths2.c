@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_charCheck2.c                                    :+:      :+:    :+:   */
+/*   ft_maths2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:53:17 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/02 17:38:02 by flcollar         ###   ########.fr       */
+/*   Created: 2022/03/02 17:06:05 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/03 12:33:36 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+size_t	ft_nbrlen_long(unsigned long long x)
 {
-	if (c == '\n' || c == '\t' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
+	size_t	i;
+
+	i = 1;
+	while (x > 9)
+	{
+		x /= 10;
+		i++;
+	}
+	return (i);
 }
 
-int	ft_issign(int c)
+size_t	ft_nbrlen_base(unsigned long long x, size_t base)
 {
-	if (c == '+')
-		return (1);
-	if (c == '-')
-		return (-1);
-	return (0);
-}
+	size_t	i;
 
-int	ft_isset(int c, const char *set)
-{
-	int		i;
-
-	i = 0;
-	while (set && set[i])
-		if (set[i++] == c)
-			return (1);
-	return (0);
+	i = 1;
+	while (x > base - 1)
+	{
+		x /= base;
+		i++;
+	}
+	return (i);
 }

@@ -22,3 +22,12 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(i, count * size);
 	return (i);
 }
+
+char	*ft_release(char *s1, char *s2)
+{
+	if (s1)
+		free(s1);
+	if (s2)
+		free(s2);
+	return (0);
+}

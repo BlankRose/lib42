@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 11:09:21 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/25 16:44:27 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:07:13 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,16 @@ static char	**ft_split2(const char *s, char c, char **res)
 
 char	**ft_split(const char *s, char c)
 {
+	size_t	i;
 	char	**r;
 
 	if (!s)
 		return (0);
-	while (*s == c && *s)
-		s++;
-	r = (char **)malloc(sizeof(char *) * (ft_split_size(s, c) + 1));
+	i = 0;
+	while (s[i] == c && s[i])
+		i++;
+	r = (char **)malloc(sizeof(char *) * (ft_split_size(&s[i], c) + 1));
 	if (!r)
 		return (0);
-	return (ft_split2(s, c, r));
+	return (ft_split2(&s[i], c, r));
 }

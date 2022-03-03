@@ -22,6 +22,11 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 
+void	ft_putnstr_fd(char *s, int fd, size_t n)
+{
+	write(fd, s, n);
+}
+
 void	ft_putendl_fd(char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));

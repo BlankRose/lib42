@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:43:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/23 11:30:06 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/02 17:08:39 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ t_vector3	ft_vector3_new(int x, int y, int z)
 	return (vector);
 }
 
+int	ft_min(int x, int min)
+{
+	if (x < min)
+		return (min);
+	return (x);
+}
+
+int	ft_max(int x, int max)
+{
+	if (x > max)
+		return (max);
+	return (x);
+}
+
 int	ft_clamp(int x, int min, int max)
 {
 	if (x < min)
@@ -33,13 +47,5 @@ int	ft_clamp(int x, int min, int max)
 
 size_t	ft_nbrlen(unsigned int x)
 {
-	size_t	i;
-
-	i = 1;
-	while (x > 9)
-	{
-		x /= 10;
-		i++;
-	}
-	return (i);
+	return (ft_nbrlen_long((unsigned long long) x));
 }
