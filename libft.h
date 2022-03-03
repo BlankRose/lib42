@@ -189,7 +189,7 @@ char		**ft_split(const char *s, char c);
 /*********************************************************/
 /*                                                       */
 /*                  STRINGS FUNCTIONS                    */
-/*       Functions to apply functions of a string        */
+/*       Functions to apply functions on a string        */
 /*                                                       */
 /*********************************************************/
 
@@ -290,6 +290,32 @@ char		*ft_dec2base(long long n, char *base);
 Return: converted string or NULL if allocation failed or invalid bases
 REQUIERD: malloc() and free() !*/
 char		*ft_base2base(char *s, char *b1, char *b2);
+
+/*********************************************************/
+/*                                                       */
+/*                  LIST MANIPULATIONS                   */
+/*        Functions to handle easily chained list        */
+/*                                                       */
+/*********************************************************/
+
+/* Creates a new list structure, initialized with CONTENT
+Return: newly created list
+REQUIERD: malloc() !*/
+t_list		*ft_lstnew(void *content);
+
+/* Fetch the last list content from the chain LST
+Return: address of last list */
+t_list		*ft_lstlast(t_list *lst);
+
+/* Count the amount of content in the chained list LST
+Return: length of LST */
+int			*ft_lstsize(t_list *lst);
+
+/* Add the NEW list in the chained list LST at first position */
+void		ft_lstadd_front(t_list **lst, t_list *new);
+
+/* Add the NEW list in the chained list LST at last position */
+void		ft_lstadd_back(t_list **lst, t_list *new);
 
 /*********************************************************/
 /*                                                       */
