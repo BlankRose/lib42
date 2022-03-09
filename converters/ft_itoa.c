@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 15:49:56 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/03 16:10:43 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:42:38 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static char	*ft_itoa2(char *str, unsigned long long nbr, size_t i)
 {

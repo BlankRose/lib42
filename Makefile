@@ -5,40 +5,58 @@
 #                                                     +:+ +:+         +:+      #
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/23 11:44:51 by flcollar          #+#    #+#              #
-#    Updated: 2022/03/03 16:10:52 by flcollar         ###   ########.fr        #
+#    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
+#    Updated: 2022/03/09 15:46:23 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIB_FOLDER = ./
-LIB_NAME = ft
-NAME = lib$(LIB_NAME).a
-
+NAME = libftprintf.a
 FLAGS = -Wall -Werror -Wextra
 DANGER = $(FLAGS) -fsanitize=address -g3
 
-SRC = ft_charCheck.c ft_charCheck2.c ft_charFind.c ft_charFind2.c \
-	  ft_strManip.c ft_strAlloc.c ft_strFunc.c ft_split.c \
-	  ft_memManip.c ft_memManip2.c ft_memAlloc.c ft_output.c \
-	  ft_convert.c ft_maths.c ft_maths2.c ft_itoa.c \
-	  ft_printf.c ft_bases.c
+CHARACTER_FOLDER = characters/
+CHARACTER_FILES = ft_charCheck.c ft_charCheck2.c ft_charFind.c ft_charFind2.c
+CHARACTER = $(addprefix $(CHARACTER_FOLDER), $(CHARACTER_FILES))
+
+STRING_FOLDER = strings/
+STRING_FILES = ft_strManip.c ft_strFunc.c ft_strAlloc.c ft_split.c
+STRING = $(addprefix $(STRING_FOLDER), $(STRING_FILES))
+
+MEMORY_FOLDER = memory/
+MEMORY_FILES = ft_memManip.c ft_memManip2.c ft_memAlloc.c
+MEMORY = $(addprefix $(MEMORY_FOLDER), $(MEMORY_FILES))
+
+CONVERT_FOLDER = converters/
+CONVERT_FILES = ft_itoa.c ft_convert.c ft_bases.c
+CONVERT = $(addprefix $(CONVERT_FOLDER), $(CONVERT_FILES))
+
+MATHS_FOLDER = maths/
+MATHS_FILES = ft_maths.c ft_maths2.c
+MATHS = $(addprefix $(MATHS_FOLDER), $(MATHS_FILES))
+
+OUTPUT_FOLDER = output/
+OUTPUT_FILES = ft_printf.c ft_output.c
+OUTPUT = $(addprefix $(OUTPUT_FOLDER), $(OUTPUT_FILES))
+
+SRC = $(CHARACTER) $(STRING) $(MEMORY) $(CONVERT) $(OUTPUT) $(MATHS)
 OBJ = $(SRC:.c=.o)
 
-TEST = main.c
-EXE = a.exe
+TESTER = printfTester
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(FLAGS) -c $(SRC)
 	@ar -rs $(NAME) $(OBJ)
 
 clean:
 	@rm -f $(OBJ)
 
 fclean: clean
-	@rm -f $(NAME) $(EXE)
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test:
+	@make -C $(TESTER)
+
+.PHONY: all clean fclean re test

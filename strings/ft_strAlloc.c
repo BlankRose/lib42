@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:59:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/03 13:42:35 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:43:43 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

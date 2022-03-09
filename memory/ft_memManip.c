@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:15:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/25 11:20:31 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:43:03 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

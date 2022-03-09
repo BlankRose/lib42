@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 11:09:21 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/01 10:07:13 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:43:39 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static char	**ft_split_error(char **res, size_t i)
 {

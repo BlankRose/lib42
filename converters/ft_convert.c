@@ -6,31 +6,26 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:10:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/03 16:10:37 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:42:34 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_ctoa(int c)
-{
-	char	*str;
-
-	str = (char *) malloc(2 * sizeof(char));
-	str[0] = (unsigned char) c;
-	str[1] = '\0';
-	return (str);
-}
+#include "../libft.h"
 
 char	*ft_getaddress(void *p)
 {
 	char	*temp;
 	char	*str;
 
-	temp = ft_dec2base((long long) p, "0123456789abcdef");
+	temp = ft_ptr2base(p, HEXA_LOW);
 	str = ft_strjoin("0x", temp);
 	ft_release(temp, 0);
 	return (str);
+}
+
+char	*ft_base2base(char *s, char *b1, char *b2)
+{
+	return (ft_dec2base(ft_base2dec(s, b1), b2));
 }
 
 int	ft_atoi(const char *str)

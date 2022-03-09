@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 11:59:25 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/21 14:00:04 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:41:43 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 int	ft_isalpha(int c)
 {

@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_charCheck2.c                                    :+:      :+:    :+:   */
+/*   ft_memManip2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 15:53:17 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/02 17:38:02 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/22 10:43:43 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/09 15:43:07 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int	ft_isspace(int c)
+void	ft_bzero(void *s, size_t n)
 {
-	if (c == '\n' || c == '\t' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
-}
-
-int	ft_issign(int c)
-{
-	if (c == '+')
-		return (1);
-	if (c == '-')
-		return (-1);
-	return (0);
-}
-
-int	ft_isset(int c, const char *set)
-{
-	int		i;
+	size_t		i;
+	char		*str;
 
 	i = 0;
-	while (set && set[i])
-		if (set[i++] == c)
-			return (1);
-	return (0);
+	str = (char *) s;
+	while (i < n)
+		str[i++] = '\0';
 }

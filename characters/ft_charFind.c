@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:32:22 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/24 18:19:47 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:41:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 int	ft_toupper(int c)
 {
@@ -62,20 +62,20 @@ char	*ft_strrchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *str, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	y;
 
 	i = 0;
 	if (!ft_strlen(needle))
-		return ((char *) haystack);
-	while (haystack[i] && i < len)
+		return ((char *) str);
+	while (str[i] && i < len)
 	{
 		y = 0;
-		while (haystack[i + y] == needle[y] && (i + y) < len)
+		while (str[i + y] == needle[y] && (i + y) < len)
 			if (!needle[++y])
-				return ((char *) &haystack[i]);
+				return ((char *) &str[i]);
 		i++;
 	}
 	return (0);

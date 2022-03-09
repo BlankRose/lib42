@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:43:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/02 17:08:39 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:42:47 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 t_vector3	ft_vector3_new(int x, int y, int z)
 {

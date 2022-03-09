@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:29:42 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/01 14:44:56 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:43:51 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 size_t	ft_strlen(const char *s)
 {

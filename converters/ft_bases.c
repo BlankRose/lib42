@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 17:22:57 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/03 13:05:27 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:42:30 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 size_t	ft_checkbase(char *base)
 {
@@ -28,12 +28,12 @@ size_t	ft_checkbase(char *base)
 	return (i);
 }
 
-long long	ft_base2dec(char *s, char *base)
+unsigned int	ft_base2dec(char *s, char *base)
 {
-	size_t		len;
-	size_t		i;
-	long long	r;
-	int			sign;
+	size_t			len;
+	size_t			i;
+	unsigned int	r;
+	int				sign;
 
 	len = ft_checkbase(base);
 	if (!s || len < 2)
@@ -48,7 +48,7 @@ long long	ft_base2dec(char *s, char *base)
 	r = 0;
 	while (ft_isset(s[i], base))
 		r = (r * len) + ft_strlenlimit(base, s[i++]);
-	return (r * sign);
+	return (r);
 }
 
 static char	*ft_dec2base2(t_vector3 v, unsigned long long nb, char *base)
@@ -70,10 +70,9 @@ static char	*ft_dec2base2(t_vector3 v, unsigned long long nb, char *base)
 	return (r);
 }
 
-char	*ft_dec2base(long long n, char *base)
+char	*ft_dec2base(unsigned int n, char *base)
 {
-	unsigned long long	nb;
-	t_vector3			v;
+	t_vector3		v;
 
 	v = ft_vector3_new(ft_checkbase(base), 1, 0);
 	if (v.x < 2)
@@ -81,15 +80,26 @@ char	*ft_dec2base(long long n, char *base)
 	if (n < 0)
 	{
 		v.y = -v.y;
-		n = -n;
 		v.z++;
 	}
-	nb = n;
-	v.z += ft_nbrlen_base(nb, v.x);
-	return (ft_dec2base2(v, nb, base));
+	v.z += ft_nbrlen_base(n, v.x);
+	return (ft_dec2base2(v, (unsigned long long) n, base));
 }
 
-char	*ft_base2base(char *s, char *b1, char *b2)
+char	*ft_ptr2base(void *x, char *base)
 {
-	return (ft_dec2base(ft_base2dec(s, b1), b2));
+	unsigned long long	nb;
+	t_vector3			v;
+
+	nb = (unsigned long long) x;
+	v = ft_vector3_new(ft_checkbase(base), 1, 0);
+	if (v.x < 2)
+		return (0);
+	if (x < 0)
+	{
+		v.y = -v.y;
+		v.z++;
+	}
+	v.z += ft_nbrlen_base(nb, v.x);
+	return (ft_dec2base2(v, nb, base));
 }

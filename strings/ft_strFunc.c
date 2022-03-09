@@ -6,11 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 10:08:04 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/25 17:23:48 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:43:47 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {

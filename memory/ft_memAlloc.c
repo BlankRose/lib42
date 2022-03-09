@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_maths2.c                                        :+:      :+:    :+:   */
+/*   ft_memAlloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 17:06:05 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/03 12:33:36 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/22 12:08:02 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/09 15:42:58 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-size_t	ft_nbrlen_long(unsigned long long x)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
+	void	*i;
 
-	i = 1;
-	while (x > 9)
-	{
-		x /= 10;
-		i++;
-	}
+	i = malloc(count * size);
+	if (!i)
+		return (0);
+	ft_bzero(i, count * size);
 	return (i);
 }
 
-size_t	ft_nbrlen_base(unsigned long long x, size_t base)
+char	*ft_release(char *s1, char *s2)
 {
-	size_t	i;
-
-	i = 1;
-	while (x > base - 1)
-	{
-		x /= base;
-		i++;
-	}
-	return (i);
+	if (s1)
+		free(s1);
+	if (s2)
+		free(s2);
+	return (0);
 }

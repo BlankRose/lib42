@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_charFind2.c                                     :+:      :+:    :+:   */
+/*   ft_maths2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 17:30:46 by flcollar          #+#    #+#             */
-/*   Updated: 2022/02/22 18:36:24 by flcollar         ###   ########.fr       */
+/*   Created: 2022/03/02 17:06:05 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/09 15:42:52 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-size_t	ft_strlstr(const char *haystack, const char *needle, size_t len)
+size_t	ft_nbrlen_long(unsigned long long x)
 {
-	size_t	found;
-	char	*y;
-
-	found = 0;
-	y = ft_strnstr(haystack, needle, len);
-	while (y)
-	{
-		found++;
-		y = ft_strnstr(&y[1], needle, len);
-	}
-	return (found);
-}
-
-size_t	ft_strnchr(const char *s, int c)
-{
-	size_t	len;
 	size_t	i;
 
-	i = 0;
-	len = 0;
-	while (s[i])
+	i = 1;
+	while (x > 9)
 	{
-		if (s[i] == c)
-			len++;
+		x /= 10;
 		i++;
 	}
-	return (len);
+	return (i);
+}
+
+size_t	ft_nbrlen_base(unsigned long long x, size_t base)
+{
+	size_t	i;
+
+	i = 1;
+	while (x > base - 1)
+	{
+		x /= base;
+		i++;
+	}
+	return (i);
 }
