@@ -1,33 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memAlloc.c                                      :+:      :+:    :+:   */
+/*   charCheckAlpha.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 12:08:02 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:42:58 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/21 11:59:25 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/10 17:57:23 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_isupper(int c)
 {
-	void	*i;
-
-	i = malloc(count * size);
-	if (!i)
-		return (0);
-	ft_bzero(i, count * size);
-	return (i);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
 }
 
-char	*ft_release(char *s1, char *s2)
+int	ft_islower(int c)
 {
-	if (s1)
-		free(s1);
-	if (s2)
-		free(s2);
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
+
+int	ft_isalpha(int c)
+{
+	if (ft_islower(c) || ft_isupper(c))
+		return (1);
+	return (0);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
+
+int	ft_isalnum(int c)
+{
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
 	return (0);
 }

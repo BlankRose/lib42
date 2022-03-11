@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strFunc.c                                       :+:      :+:    :+:   */
+/*   limits.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 10:08:04 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:43:47 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/22 12:43:55 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/11 10:40:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+int	ft_min(int x, int min)
 {
-	unsigned int	i;
-	char			*str;
-
-	str = (char *) malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!str)
-		return (0);
-	i = 0;
-	while (s[i])
-	{
-		str[i] = f(i, s[i]);
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	if (x < min)
+		return (min);
+	return (x);
 }
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+int	ft_max(int x, int max)
 {
-	unsigned int	i;
+	if (x > max)
+		return (max);
+	return (x);
+}
 
-	i = 0;
-	while (s[i])
-	{
-		f(i, &s[i]);
-		i++;
-	}
+int	ft_clamp(int x, int min, int max)
+{
+	if (x < min)
+		return (min);
+	if (x > max)
+		return (max);
+	return (x);
 }

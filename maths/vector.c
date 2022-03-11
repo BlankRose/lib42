@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_charFind2.c                                     :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 17:30:46 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:42:02 by flcollar         ###   ########.fr       */
+/*   Created: 2022/03/10 17:52:36 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/11 10:40:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlstr(const char *str, const char *needle, size_t len)
+t_vector3	ft_vector3_new(int x, int y, int z)
 {
-	size_t	found;
-	char	*y;
+	t_vector3	vector;
 
-	found = 0;
-	y = ft_strnstr(str, needle, len);
-	while (y)
-	{
-		found++;
-		y = ft_strnstr(&y[1], needle, len);
-	}
-	return (found);
-}
-
-size_t	ft_strnchr(const char *s, int c)
-{
-	size_t	len;
-	size_t	i;
-
-	i = 0;
-	len = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			len++;
-		i++;
-	}
-	return (len);
+	vector.x = x;
+	vector.y = y;
+	vector.z = z;
+	return (vector);
 }

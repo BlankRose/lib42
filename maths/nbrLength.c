@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_maths2.c                                        :+:      :+:    :+:   */
+/*   nbrLength.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 17:06:05 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:42:52 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/11 10:40:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,9 @@ size_t	ft_nbrlen_base(unsigned long long x, size_t base)
 		i++;
 	}
 	return (i);
+}
+
+size_t	ft_nbrlen(unsigned int x)
+{
+	return (ft_nbrlen_long((unsigned long long) x));
 }

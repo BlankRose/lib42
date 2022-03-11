@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memManip2.c                                     :+:      :+:    :+:   */
+/*   changeChar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 10:43:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:43:07 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/21 13:32:22 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/11 09:27:34 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_toupper(int c)
 {
-	size_t		i;
-	char		*str;
+	if (c >= 'a' && c <= 'z')
+		return ((c - 'a') + 'A');
+	return (c);
+}
 
-	i = 0;
-	str = (char *) s;
-	while (i < n)
-		str[i++] = '\0';
+int	ft_tolower(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return ((c - 'A') + 'a');
+	return (c);
 }

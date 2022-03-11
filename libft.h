@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:41:36 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/11 10:18:18 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,46 @@
 #  include <unistd.h>
 # endif
 
+/*********************************************************/
+/*                                                       */
+/*                     DEFINITIONS                       */
+/*  Various macros for easier handling across functions  */
+/*                                                       */
+/*********************************************************/
+
+/* Definitions of booleans */
+
+# define TRUE 1
+# define FALSE 0
+
+/* Definitions of various basic bases */
+
 # define BINARY "01"
 # define OCTAL "01234567"
 # define DECIMAL "0123456789"
 # define HEXA_LOW "0123456789abcdef"
 # define HEXA_UP "0123456789ABCDEF"
 # define HEXA HEXA_LOW
+
+/* Definitions of colors for texts */
+
+# define BLACK "\033[30m"
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define PURPLE "\033[35m"
+# define CYAN "\033[36m"
+# define WHITE "\033[37m"
+# define COLORLESS "\033[39m"
+
+# define BOLD "\033[1m"
+# define FAINTCOLOR "\033[2m"
+# define ITALIC "\033[3m"
+# define UNDERLINE "\033[4m"
+# define FONTLESS "\033[22;23m"
+
+# define RESETFONT "\033[0m"
 
 /*********************************************************/
 /*                                                       */
@@ -36,8 +70,16 @@
 /*                                                       */
 /*********************************************************/
 
+/* Color structure for specifying colors
+Variables: (unsigned char) r, g, b */
+typedef struct s_color {
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}	t_color;
+
 /* Vector 3 structure for 3D coordinates
-Variables: (int) x, (int) y, (int) z*/
+Variables: (int) x, y, z */
 typedef struct s_vector3 {
 	int		x;
 	int		y;
@@ -45,14 +87,14 @@ typedef struct s_vector3 {
 }	t_vector3;
 
 /* Vector 2 structure for 2D coordinates
-Variables: (int) x, (int) y*/
+Variables: (int) x, y */
 typedef struct s_vector2 {
 	int		x;
 	int		y;
 }	t_vector2;
 
 /* Chained list structure
-Variables: (void*) content, (s_list*) next*/
+Variables: (void*) content, (s_list*) next */
 typedef struct s_list {
 	void			*content;
 	struct s_list	*next;
@@ -64,6 +106,14 @@ typedef struct s_list {
 /*      Functions for testing specifics characters       */
 /*                                                       */
 /*********************************************************/
+
+/* Test if C is a lower case character
+Return: 1 (TRUE) or 0 (FALSE) */
+int				ft_islower(int c);
+
+/* Test if C is an upper case character
+Return: 1 (TRUE) or 0 (FALSE) */
+int				ft_isupper(int c);
 
 /* Test if C is alphabetic
 Return: 1 (TRUE) or 0 (FALSE) */
@@ -151,9 +201,23 @@ size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 Return: length of S */
 size_t			ft_strlen(const char *s);
 
-/* Check the length of the string S before C appears
+/* Check the length of the string S before the character C appears
 Return: length of S */
 size_t			ft_strlenlimit(const char *s, char c);
+
+/* Check the length of the string S before the character C disappears
+Return: length of S */
+size_t			ft_strlenlimitrev(const char *s, char c);
+
+/* Check the length of the string S before any specified characters in
+SET appears
+Return: length of S */
+size_t			ft_strlenlimitset(const char *s, char *set);
+
+/* Check the length of the string S before any specified characters in
+SET disapears
+Return: length of S */
+size_t			ft_strlenlimitsetrev(const char *s, char *set);
 
 /* Compare the strings S1 and S2 within N characters
 Return: difference between S1 and S2 */
@@ -185,13 +249,6 @@ char			*ft_strtrim(const char *s1, const char *set);
 Return: newly created table of strings or NULL if allocation failed
 REQUIERD: malloc() and free() !*/
 char			**ft_split(const char *s, char c);
-
-/*********************************************************/
-/*                                                       */
-/*                  STRINGS FUNCTIONS                    */
-/*       Functions to apply functions on a string        */
-/*                                                       */
-/*********************************************************/
 
 /* Apply a function F() to every characters of a string S */
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -324,6 +381,10 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
 /*                                                       */
 /*********************************************************/
 
+/* Check the length of the memory S
+Return: length of S */
+size_t			ft_memlen(const void *s);
+
 /* Change LEN octets of given data B with data C
 Return: modified data B */
 void			*ft_memset(void *b, int c, size_t len);
@@ -393,6 +454,6 @@ size_t			ft_putnstr_fd(const char *s, int fd, size_t n);
 /* Print out the string S to the output, and converts using various flags
 Return: number of caracters printed or -1 if it failed
 REQUIERD: malloc(), free(), write() and va_arg() !*/
-int				ft_printf(const char *s, ...);
+int				ft_printf(int fd, const char *s, ...);
 
 #endif

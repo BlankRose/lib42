@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_charFind.c                                      :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 13:32:22 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:41:56 by flcollar         ###   ########.fr       */
+/*   Created: 2022/02/22 17:30:46 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/11 09:28:12 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-
-int	ft_toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return ((c - 'a') + 'A');
-	return (c);
-}
-
-int	ft_tolower(int c)
-{
-	if (c >= 'A' && c <= 'Z')
-		return ((c - 'A') + 'a');
-	return (c);
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -62,6 +48,22 @@ char	*ft_strrchr(const char *s, int c)
 	return (0);
 }
 
+size_t	ft_strnchr(const char *s, int c)
+{
+	size_t	len;
+	size_t	i;
+
+	i = 0;
+	len = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			len++;
+		i++;
+	}
+	return (len);
+}
+
 char	*ft_strnstr(const char *str, const char *needle, size_t len)
 {
 	size_t	i;
@@ -79,4 +81,19 @@ char	*ft_strnstr(const char *str, const char *needle, size_t len)
 		i++;
 	}
 	return (0);
+}
+
+size_t	ft_strlstr(const char *str, const char *needle, size_t len)
+{
+	size_t	found;
+	char	*y;
+
+	found = 0;
+	y = ft_strnstr(str, needle, len);
+	while (y)
+	{
+		found++;
+		y = ft_strnstr(&y[1], needle, len);
+	}
+	return (found);
 }

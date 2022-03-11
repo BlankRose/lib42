@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 12:34:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/09 15:43:20 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/11 10:40:56 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_convert(const char *src, va_list *args, int fd)
 	return (y);
 }
 
-int	ft_printf(const char *s, ...)
+int	ft_printf(int fd, const char *s, ...)
 {
 	t_vector3	v;
 	va_list		args;
@@ -65,11 +65,11 @@ int	ft_printf(const char *s, ...)
 	while (s[v.x])
 	{
 		v.y = ft_strlenlimit(&s[v.x], '%');
-		v.z += ft_putnstr_fd(&s[v.x], 1, (size_t) v.y);
+		v.z += ft_putnstr_fd(&s[v.x], fd, (size_t) v.y);
 		v.x += v.y;
 		if (ft_strchr(&s[v.x], '%'))
 		{
-			v.z += ft_convert(&s[++v.x], &args, 1);
+			v.z += ft_convert(&s[++v.x], &args, fd);
 			v.x++;
 		}
 	}
