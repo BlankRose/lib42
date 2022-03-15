@@ -1,10 +1,11 @@
 .vscode/*
+*Tester*
 main.c
+.normignore
 *.[oa]
 *.exe
 *.exe*
 *.out
 *.out*
-
-printfTester
-printfTester/*
+test*
+test

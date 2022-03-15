@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.c                                          :+:      :+:    :+:   */
+/*   list_create.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 21:49:59 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/03 21:49:59 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:08:44 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 t_list	*ft_lstnew(void *content)
 {
@@ -31,12 +31,12 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-int	*ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int		i;
 
 	i = 0;
-	while (lst && lst->next)
+	while (lst)
 	{
 		lst = lst->next;
 		i++;
@@ -46,17 +46,22 @@ int	*ft_lstsize(t_list *lst)
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!lst)
+	if (!new)
+		return ;
+	if (!*lst)
 	{
 		*lst = new;
 		return ;
 	}
-	new->next = lst;
+	new->next = *lst;
+	*lst = new;
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!lst)
+	if (!new)
+		return ;
+	if (!*lst)
 	{
 		*lst = new;
 		return ;

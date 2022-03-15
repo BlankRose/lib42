@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   changeChar.c                                       :+:      :+:    :+:   */
+/*   list_destroy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 13:32:22 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/11 09:27:34 by flcollar         ###   ########.fr       */
+/*   Created: 2022/03/15 15:14:43 by flcollar          #+#    #+#             */
+/*   Updated: 2022/03/15 16:41:22 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_toupper(int c)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (c >= 'a' && c <= 'z')
-		return ((c - 'a') + 'A');
-	return (c);
+	if (!lst)
+		return ;
+	if (lst->content)
+		del(lst->content);
+	free(lst);
 }
 
-int	ft_tolower(int c)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (c >= 'A' && c <= 'Z')
-		return ((c - 'A') + 'a');
-	return (c);
+	t_list	*current;
+	t_list	*next;
+
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
+	{
+		next = current->next;
+		ft_lstdelone(current, del);
+		current = next;
+	}
+	lst = NULL;
 }
