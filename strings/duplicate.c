@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:59:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/11 10:40:56 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:03:27 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	len;
 	char	*r;
 
+	if (!s1 || !s2)
+		return (0);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	r = (char *) malloc((len + 1) * sizeof(char));
 	if (!r)

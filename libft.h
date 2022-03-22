@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/15 17:15:40 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:11:18 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,26 @@
 
 /* Definitions of colors for texts */
 
-// # define BLACK "\033[30m"
-// # define RED "\033[31m"
-// # define GREEN "\033[32m"
-// # define YELLOW "\033[33m"
-// # define BLUE "\033[34m"
-// # define PURPLE "\033[35m"
-// # define CYAN "\033[36m"
-// # define WHITE "\033[37m"
-// # define COLORLESS "\033[39m"
+# define BLACK "\033[30m"
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define PURPLE "\033[35m"
+# define CYAN "\033[36m"
+# define WHITE "\033[37m"
+# define COLORLESS "\033[39m"
 
-// # define BOLD "\033[1m"
-// # define FAINTCOLOR "\033[2m"
-// # define ITALIC "\033[3m"
-// # define UNDERLINE "\033[4m"
-// # define FONTLESS "\033[22;23m"
+# define BOLD "\033[1m"
+# define DARK "\033[2m"
+# define ITALIC "\033[3m"
+# define UNDERLINE "\033[4m"
+# define FONTLESS "\033[22;23m"
 
-// # define RESETFONT "\033[0m"
+# define RESETFONT "\033[0m"
 
 typedef unsigned int	t_uint;
+typedef unsigned char	t_byte;
 
 /*********************************************************/
 /*                                                       */
@@ -78,12 +79,13 @@ typedef unsigned int	t_uint;
 /*                                                       */
 /*********************************************************/
 
-/* Color structure for specifying colors
-Variables: (unsigned char) r, g, b */
+/* Color structure for specifying colors (Alpha, Red, Green, Blue)
+Variables: (unsigned char) a, r, g, b */
 typedef struct s_color {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
+	t_byte	a;
+	t_byte	r;
+	t_byte	g;
+	t_byte	b;
 }	t_color;
 
 /* Vector 3 structure for 3D coordinates
@@ -158,6 +160,14 @@ int			ft_isset(int c, const char *set);
 /* Test if STR contains any character existing within a definied SET
 Return: 1 (TRUE) or 0 (FALSE) */
 int			ft_contains(const char *str, const char *set);
+
+/* Test if STR starts with the string S
+Return: 1 (TRUE) or 0 (FALSE) */
+int			ft_startswith(const char *str, const char *s);
+
+/* Test if STR ends with the string S
+Return: 1 (TRUE) or 0 (FALSE) */
+int			ft_endswith(const char *str, const char *s);
 
 /*********************************************************/
 /*                                                       */
@@ -277,10 +287,6 @@ char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 /*                                                       */
 /*********************************************************/
 
-/* Creates a new vector 3 structure with specified coordinates
-Return: newly created vector3 */
-t_vector3	ft_vector3_new(int x, int y, int z);
-
 /* Check the length of the number X but allows massive numbers
 Return: length of X */
 size_t		ft_nbrlen_long(unsigned long long x);
@@ -366,6 +372,18 @@ char		*ft_base2base(char *s, char *b1, char *b2);
 /*           Functions to handle easily data             */
 /*                                                       */
 /*********************************************************/
+
+/* Creates a new color structure with specified color tones
+Return: newly created color struct */
+t_color		ft_color_new(int a, int r, int g, int b);
+
+/* Creates a new vector 3 structure with specified coordinates
+Return: newly created vector3 */
+t_vector3	ft_vector3_new(int x, int y, int z);
+
+/* Creates a new vector 2 structure with specified coordinates
+Return: newly created vector2 */
+t_vector2	ft_vector2_new(int x, int y);
 
 /* Creates a new list structure, initialized with CONTENT
 Return: newly created list
@@ -457,7 +475,12 @@ char		*ft_getaddress(void *p);
 /* Allows to free multiples strings at once
 Return: NULL
 REQUIERD: free() !*/
-char		*ft_release(char *s1, char *s2);
+char		*ft_free_multi(char *s1, char *s2);
+
+/* Allows to free multiples N strings of an ARRAY of strings
+Return: NULL
+REQUIERD: free() !*/
+char		**ft_free_array(char **array, size_t n);
 
 /*********************************************************/
 /*                                                       */
@@ -470,6 +493,11 @@ char		*ft_release(char *s1, char *s2);
 Return: string which contains the line
 REQUIERD: malloc(), free() and read() !*/
 char		*get_next_line(int fd);
+
+/* Fetch every lines on the file FD
+Return: table containing every lines converted into strings
+REQUIERD: malloc(), free() and read() !*/
+t_list		*get_all_lines(int fd);
 
 /* Print out a single character C, in a specified output/file FD
 REQUIERD: write() !*/

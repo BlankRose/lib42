@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:14:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/15 16:41:22 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/22 11:55:40 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (!lst)
-		return ;
-	if (lst->content)
-		del(lst->content);
+	del(lst->content);
 	free(lst);
 }
 
@@ -35,5 +32,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		ft_lstdelone(current, del);
 		current = next;
 	}
-	lst = NULL;
+	*lst = 0;
 }

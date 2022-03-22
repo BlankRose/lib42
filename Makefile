@@ -6,13 +6,22 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/03/15 16:55:23 by flcollar         ###   ########.fr        #
+#    Updated: 2022/03/22 12:26:37 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#==--------------------------------------==#
+# *                                      * #
+#             GLOBAL SETTINGS              #
+# *                                      * #
+#==--------------------------------------==#
 
 NAME = libft.a
 FLAGS = -Wall -Werror -Wextra
 DANGER = $(FLAGS) -fsanitize=address -g3
+
+BUFFER_SIZE = 10000
+DEFINES = -D BUFFER_SIZE=$(BUFFER_SIZE)
 
 #==--------------------------------------==#
 # *                                      * #
@@ -38,17 +47,17 @@ CONVERT = $(addprefix $(CONVERT_FOLDER), $(CONVERT_FILES))
 
 # MATHEMATICS
 MATHS_FOLDER = maths/
-MATHS_FILES = limits.c nbrLength.c vector.c
+MATHS_FILES = limits.c nbrLength.c
 MATHS = $(addprefix $(MATHS_FOLDER), $(MATHS_FILES))
 
 # DATA MANAGER
 DATA_FOLDER = data/
-DATA_FILES = list_create.c list_modify.c list_destroy.c
+DATA_FILES = list_create.c list_modify.c list_destroy.c struct_init.c
 DATA = $(addprefix $(DATA_FOLDER), $(DATA_FILES))
 
 # IN & OUT HANDLERS
 IN_OUT_FOLDER = inout/
-IN_OUT_FILES = getNextLine.c printf.c write.c
+IN_OUT_FILES = getLines.c printf.c write.c
 IN_OUT = $(addprefix $(IN_OUT_FOLDER), $(IN_OUT_FILES))
 
 # ALL SOURCES TOGHETER
@@ -57,17 +66,17 @@ OBJ = $(SRC:.c=.o)
 
 #==--------------------------------------==#
 # *                                      * #
-#                   RULES                  #
+#             MAKEFILE'S RULES             #
 # *                                      * #
 #==--------------------------------------==#
 
 all: $(NAME)
 
 .c.o:
-	@gcc $(FLAGS) -o $@ -c $<
+	@gcc $(FLAGS) $(DEFINES) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	@ar -rs $(NAME) $(OBJ)
+	@ar -rsc $(NAME) $(OBJ)
 
 bonus: $(NAME)
 

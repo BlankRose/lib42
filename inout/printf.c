@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 12:34:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/11 10:40:56 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/22 10:30:10 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static char	*ft_convert_uint(const char *src, unsigned int arg)
 		str = ft_dec2base(arg, HEXA_UP);
 	else if (src[0] == 'o')
 		str = ft_dec2base(arg, OCTAL);
+	else if (src[0] == 'b')
+		str = ft_dec2base(arg, BINARY);
 	return (str);
 }
 
@@ -44,7 +46,7 @@ static int	ft_convert(const char *src, va_list *args, int fd)
 		str = ft_itoa(va_arg(*args, int));
 	else if (src[0] == 'p')
 		str = ft_getaddress(va_arg(*args, void *));
-	if (ft_isset(src[0], "uxXo"))
+	if (ft_isset(src[0], "uxXob"))
 		str = ft_convert_uint(src, va_arg(*args, unsigned int));
 	if (!str)
 		return (-1);

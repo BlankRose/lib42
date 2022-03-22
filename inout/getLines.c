@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getNextLine.c                                      :+:      :+:    :+:   */
+/*   getLines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:02:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/15 12:25:14 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:25:58 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ static char	*read_next_line(char *res, int fd)
 			return (res);
 		ft_bzero(temp, BUFFER_SIZE + 1);
 		y = read(fd, temp, BUFFER_SIZE);
-	}
-	if (y < 0)
-	{
-		if (res)
-			free(res);
-		return (0);
 	}
 	return (res);
 }
@@ -64,7 +58,7 @@ static char	*catch_next_line(char *str)
 
 char	*get_next_line(int fd)
 {
-	char			*res;
+	char		*res;
 
 	res = 0;
 	if (fd < 0)
@@ -74,4 +68,20 @@ char	*get_next_line(int fd)
 		res = read_next_line(res, fd);
 	res = catch_next_line(res);
 	return (res);
+}
+
+t_list	*get_all_lines(int fd)
+{
+	t_list		*list;
+	char		*line;
+
+	if (fd < 0)
+		return (0);
+	line = get_next_line(fd);
+	while (line)
+	{
+		ft_lstadd_back(&list, ft_lstnew(line));
+		line = get_next_line(fd);
+	}
+	return (list);
 }

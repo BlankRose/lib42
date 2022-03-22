@@ -6,19 +6,11 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 11:09:21 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/11 10:40:56 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:22:28 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-
-static char	**ft_split_error(char **res, size_t i)
-{
-	while (i)
-		free(res[--i]);
-	free(res);
-	return (0);
-}
 
 static size_t	ft_split_size(const char *s, char c)
 {
@@ -53,7 +45,7 @@ static char	**ft_split2(const char *s, char c, char **res)
 			len++;
 		res[i] = malloc(len + 1);
 		if (!res[i])
-			return (ft_split_error(res, i));
+			return (ft_free_array(res, i));
 		ft_strlcpy(res[i++], &s[y - len], len + 1);
 		while (s[y] == c && s[y])
 			y++;

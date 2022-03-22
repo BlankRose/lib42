@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:08:02 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/15 12:26:03 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/22 12:20:08 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,19 @@ char	*ft_realloc(char *prev, size_t n)
 	return (new);
 }
 
-char	*ft_release(char *s1, char *s2)
+char	*ft_free_multi(char *s1, char *s2)
 {
 	if (s1)
 		free(s1);
 	if (s2)
 		free(s2);
+	return (0);
+}
+
+char	**ft_free_array(char **array, size_t n)
+{
+	while (n)
+		free(array[--n]);
+	free(array);
 	return (0);
 }
