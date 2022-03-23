@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/22 18:11:18 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:32:22 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -393,6 +393,10 @@ t_list		*ft_lstnew(void *content);
 /* Fetch the last list content from the chain LST
 Return: address of last list */
 t_list		*ft_lstlast(t_list *lst);
+
+/* Locate the list structure in LST at index N
+Return: located LST or NULL if none exists */
+t_list		*ft_lstlocate(t_list *lst, size_t n);
 
 /* Count the amount of content in the chained list LST
 Return: length of LST */

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:02:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/22 12:25:58 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:27:08 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ t_list	*get_all_lines(int fd)
 	if (fd < 0)
 		return (0);
 	line = get_next_line(fd);
+	list = 0;
 	while (line)
 	{
 		ft_lstadd_back(&list, ft_lstnew(line));
