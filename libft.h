@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/23 15:32:22 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/25 14:51:25 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@
 # define FONTLESS "\033[22;23m"
 
 # define RESETFONT "\033[0m"
+
+/* Typedefs of commonly used variables for faster typing */
 
 typedef unsigned int	t_uint;
 typedef unsigned char	t_byte;
@@ -504,28 +506,38 @@ REQUIERD: malloc(), free() and read() !*/
 t_list		*get_all_lines(int fd);
 
 /* Print out a single character C, in a specified output/file FD
+Return: amount of characters written
 REQUIERD: write() !*/
 size_t		ft_putchar_fd(char c, int fd);
 
 /* Print out the string S in a specified output/file FD
+Return: amount of characters written
 REQUIERD: write() !*/
 size_t		ft_putstr_fd(char *s, int fd);
 
 /* Print out the string S and add a new line in a specified output/file FD
+Return: amount of characters written
 REQUIERD: write() !*/
 size_t		ft_putendl_fd(char *s, int fd);
 
 /* Print out the number N in a specified output/file FD
+Return: amount of characters written
 REQUIERD: write() !*/
 size_t		ft_putnbr_fd(int n, int fd);
 
 /* Print out the string S in a specified output/file FD
+Return: amount of characters written
 REQUIERD: write() !*/
 size_t		ft_putnstr_fd(const char *s, int fd, size_t n);
 
 /* Print out the string S to the output FD, and converts using various flags
-Return: number of caracters printed or -1 if an error occured
+Return: amount of caracters printed or -1 if an error occured
 REQUIERD: malloc(), free(), write() and va_arg() !*/
 int			ft_printf(int fd, const char *s, ...);
+
+/* Print out the whole LST to the output FD
+Return: amount of characters written
+REQUIERD: write() !*/
+int			ft_printlst(int fd, const t_list *lst);
 
 #endif

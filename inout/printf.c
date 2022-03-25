@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 12:34:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/22 10:30:10 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/25 14:54:55 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,17 @@ int	ft_printf(int fd, const char *s, ...)
 	}
 	va_end(args);
 	return (v.z);
+}
+
+int	ft_printlst(int fd, const t_list *lst)
+{
+	size_t	i;
+
+	i = 0;
+	while (lst)
+	{
+		i += ft_putstr_fd((char *) lst->content, fd);
+		lst = lst->next;
+	}
+	return (i);
 }

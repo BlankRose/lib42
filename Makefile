@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/03/22 12:26:37 by flcollar         ###   ########.fr        #
+#    Updated: 2022/03/24 16:01:09 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ DATA = $(addprefix $(DATA_FOLDER), $(DATA_FILES))
 
 # IN & OUT HANDLERS
 IN_OUT_FOLDER = inout/
-IN_OUT_FILES = getLines.c printf.c write.c
+IN_OUT_FILES = lines.c printf.c write.c
 IN_OUT = $(addprefix $(IN_OUT_FOLDER), $(IN_OUT_FILES))
 
 # ALL SOURCES TOGHETER
