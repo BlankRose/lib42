@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/25 14:51:25 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/30 13:06:46 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,6 +313,10 @@ int			ft_min(int x, int min);
 Return: X or MAX */
 int			ft_max(int x, int max);
 
+/* Calculates N to the power of POW
+Return: Result of N ^ POW */
+int			ft_power(int n, int pow);
+
 /*********************************************************/
 /*                                                       */
 /*                      CONVERTERS                       */
@@ -367,6 +371,16 @@ char		*ft_ptr2base(void *x, char *base);
 Return: converted string or NULL if allocation failed or invalid bases
 REQUIERD: malloc() and free() !*/
 char		*ft_base2base(char *s, char *b1, char *b2);
+
+/* Convert C into a 8-bits representative string 
+Return: Newly created string or NULL if allocation failed
+REQUIERD: malloc() !*/
+char		*ft_byte2binary(t_byte c);
+
+/* Converts the 8-bits representation string S into its
+corresponding byte value
+Return: Unsigned char found */
+t_byte		ft_binary2byte(char *s);
 
 /*********************************************************/
 /*                                                       */

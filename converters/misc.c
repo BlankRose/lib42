@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:10:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/22 16:07:51 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/03/30 12:54:02 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ char	*ft_getaddress(void *p)
 	str = ft_strjoin("0x", temp);
 	ft_free_multi(temp, 0);
 	return (str);
-}
-
-char	*ft_base2base(char *s, char *b1, char *b2)
-{
-	return (ft_dec2base(ft_base2dec(s, b1), b2));
 }
 
 int	ft_atoi(const char *str)
