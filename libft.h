@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:30:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/30 13:06:46 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:35:02 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,10 @@ int			ft_isspace(int c);
 /* Test if C is a sign positive or negative
 Return: 1 (POSITIVE) or 0 (FALSE) or -1 (NEGATIVE) */
 int			ft_issign(int c);
+
+/* Test if C reprensents a valid number
+Return: 1 (TRUE) or 0 (FALSE) */
+int			ft_isnum(char *c);
 
 /* Test if C exist within a definied SET 
 Return: 1 (TRUE) or 0 (FALSE) */
@@ -316,6 +320,14 @@ int			ft_max(int x, int max);
 /* Calculates N to the power of POW
 Return: Result of N ^ POW */
 int			ft_power(int n, int pow);
+
+/* Checks wether the string N could overflow within an 'int'
+Return: TRUE (1) or FALSE (0) */
+int			ft_intoverflow(char *n);
+
+/* Checks wether the string N could overflow within an 'long long'
+Return: TRUE (1) or FALSE (0) */
+int			ft_longoverflow(char *n);
 
 /*********************************************************/
 /*                                                       */
@@ -502,6 +514,10 @@ Return: NULL
 REQUIERD: free() !*/
 char		**ft_free_array(char **array, size_t n);
 
+/* Check the length of the ARRAY
+Return: length of ARRAY */
+size_t		ft_array_len(char **array);
+
 /*********************************************************/
 /*                                                       */
 /*                  IN & OUT HANDLER                     */
@@ -552,6 +568,6 @@ int			ft_printf(int fd, const char *s, ...);
 /* Print out the whole LST to the output FD
 Return: amount of characters written
 REQUIERD: write() !*/
-int			ft_printlst(int fd, const t_list *lst);
+int			ft_printlst(int fd, const t_list *lst, const char *sep);
 
 #endif

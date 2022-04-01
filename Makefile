@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/03/30 12:54:20 by flcollar         ###   ########.fr        #
+#    Updated: 2022/04/01 15:28:37 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ CONVERT = $(addprefix $(CONVERT_FOLDER), $(CONVERT_FILES))
 
 # MATHEMATICS
 MATHS_FOLDER = maths/
-MATHS_FILES = limits.c nbrLength.c power.c
+MATHS_FILES = limits.c nbrLength.c power.c overflow.c
 MATHS = $(addprefix $(MATHS_FOLDER), $(MATHS_FILES))
 
 # DATA MANAGER
