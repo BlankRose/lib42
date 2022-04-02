@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:08:02 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/01 13:32:21 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/02 16:33:36 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ char	*ft_realloc(char *prev, size_t n)
 	return (new);
 }
 
+void	*ft_memdup(void *mem)
+{
+	void	*new;
+
+	new = ft_calloc(ft_memlen(mem), sizeof(t_byte));
+	if (!new)
+		return (0);
+	return (ft_memcpy(new, mem, ft_memlen(mem)));
+}
+
 char	*ft_free_multi(char *s1, char *s2)
 {
 	if (s1)
@@ -50,15 +60,5 @@ char	**ft_free_array(char **array, size_t n)
 	while (n)
 		free(array[--n]);
 	free(array);
-	return (0);
-}
-
-size_t	ft_array_len(char **array)
-{
-	size_t		i;
-
-	i = 0;
-	while (array && array[i])
-		i++;
 	return (0);
 }

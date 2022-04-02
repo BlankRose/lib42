@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/02 11:17:06 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/02 16:33:23 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -384,6 +384,11 @@ void		*ft_memcpy(void *dst, const void *src, size_t n);
 /* Move N octets from data SRC to DST
 Return: modified data DST */
 void		*ft_memmove(void *dst, const void *src, size_t len);
+
+/* Duplicates the memory MEM
+Return: newly created memory or NULL if allocation failed
+REQUIERD: malloc () !*/
+void		*ft_memdup(void *mem);
 
 /* Locates data C within data S in the N first octets
 Return: address of C found */
