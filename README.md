@@ -9,7 +9,7 @@
 	<img alt="Code Size" src="https://img.shields.io/github/languages/code-size/BlankRose/libft?label=Code+Size&color=informational&style=plastic"/>
 	<img alt="Last Commit" src="https://img.shields.io/github/last-commit/BlankRose/libft?label=Last+Commit&color=critical&style=plastic"/>
 	<br>
-	<img alt="Libft" src="https://img.shields.io/static/v1?label=Libft+Mark&message=100+/+100&color=success&style=plastic"/>
+	<img alt="Libft" src="https://img.shields.io/static/v1?label=Libft+Mark&message=125+/+100&color=success&style=plastic"/>
 	<img alt="Libft" src="https://img.shields.io/static/v1?label=Printf+Mark&message=100+/+100&color=success&style=plastic"/>
 	<img alt="Libft" src="https://img.shields.io/static/v1?label=GNL+Mark&message=101+/+100&color=success&style=plastic"/>
 </p>
