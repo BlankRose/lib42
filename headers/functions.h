@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/01 15:51:35 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/02 11:17:06 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,6 +320,11 @@ Return: newly created list
 REQUIERD: malloc() !*/
 t_list		*ft_lstnew(void *content);
 
+/* Duplicates LST, using the function F to duplicate its content
+Return: newly created list
+REQUIERD: malloc() !*/
+t_list		*ft_lstdup(t_list *lst, void *(*f) (void *));
+
 /* Fetch the last list content from the chain LST
 Return: address of last list */
 t_list		*ft_lstlast(t_list *lst);
@@ -345,7 +350,8 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 
 /* Create a new chained list out of the list LST and apply the function F
 on each content (uses the function DEL if needed) 
-WARNING: NOT FINISHED !*/
+Return: newly created list
+REQUIERD: malloc() !*/
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /* Clear the element LST using the function DEL to clear its content properly
