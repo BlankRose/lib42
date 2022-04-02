@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:13:41 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/01 15:53:46 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/02 16:01:19 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ static int	ft_overflow(char *n, char *cmp, int sign)
 		return (1);
 	else
 	{
-		ft_printf(1, "Same Length!\n");
 		i = 0;
 		while (n[i] && cmp[i] && n[i] == cmp[i])
 			i++;
-		ft_printf(1, "%c VS %c [%d]\n", n[i], cmp[i], sign);
 		if ((sign >= 0 && n[i] <= cmp[i])
 			|| (sign < 0 && n[i] >= cmp[i]))
 			return (0);
