@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/02 16:33:23 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/03 14:51:16 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,11 +348,22 @@ void		ft_lstadd_back(t_list **lst, t_list *new);
 on each content */
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 
+/* Iterates accross a list, starting from LST and apply a function F
+on each content, with PARAM passed as its argument aswell */
+void		ft_lstiter_arg(t_list *lst, void (*f)(void *, void *), void *param);
+
 /* Create a new chained list out of the list LST and apply the function F
 on each content (uses the function DEL if needed) 
 Return: newly created list
 REQUIERD: malloc() !*/
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* Create a new chained list out of the list LST and apply the function F on
+each content (uses the function DEL if needed), with PARAM passed as its argument
+Return: newly created list
+REQUIERD: malloc() !*/
+t_list		*ft_lstmap_arg(t_list *lst, void *(*f)(void *, void *),
+				void (*del)(void *), void *param);
 
 /* Clear the element LST using the function DEL to clear its content properly
 REQUIERD: free() !*/

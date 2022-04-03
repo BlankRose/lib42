@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:44:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/02 11:21:46 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:39:01 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,11 @@
 /*********************************************************/
 
 /* Definition for buffers' size (Used by read()) */
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
 # endif
 
 /* Definitions of booleans */
-
 # define TRUE 1
 # define FALSE 0
 
@@ -215,5 +213,6 @@
 
 typedef unsigned int	t_uint;
 typedef unsigned char	t_byte;
+typedef int				t_bool;
 
 #endif

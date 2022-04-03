@@ -1,6 +1,6 @@
 <h1 align='center'>
 	📖 <b>Libft</b><br>
-	<i>Personal home-made Library</i>
+	<i style='font-size:120%;'>Personal home-made Library</i>
 </h1>
 
 <p align="center">
@@ -24,8 +24,8 @@
 <h2 style='font-size:160%; font-family:impact'>
 	🧰	How to use it?
 </h2><p>
-	Run the command 'make -C [dir]' on a terminal to compile the library and use the following flags<br>
-	to use it with your other projects: 'gcc -L [lib's dir] -l ft ..'<br><br>
+	Run the command <b style='font-family:Courier New'>'make -C [dir]'</b> on a terminal to compile the library and use the following flags<br>
+	to use it with your other projects: <b style='font-family:Courier New'>'gcc -L [lib's dir] -l ft ..'</b><br><br>
 </p>
 
 <h2 style='font-size:160%; font-family:impact'>
@@ -38,10 +38,10 @@
 		<li>ft_printf</li>
 		<li>GetNextLine</li>
 		<li>Lots of extra functions</li>
-	</ul>
+	</ul><br>
 </p>
 
-<h2 style='font-size:160%; font-family:impact'>
+<h2 style='font-size:140%; font-family:impact'>
 	📜	Side Notes
 </h2><p><em>
 	<ul>
