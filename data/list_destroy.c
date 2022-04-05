@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 15:14:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/22 11:55:40 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/05 11:07:33 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	del(lst->content);
+	if (!lst)
+		return ;
+	if (!del)
+		del(lst->content);
 	free(lst);
 }
 

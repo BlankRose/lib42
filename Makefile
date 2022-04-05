@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/04/03 14:46:25 by flcollar         ###   ########.fr        #
+#    Updated: 2022/04/05 11:32:23 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar -rsc $(NAME) $(OBJ)
-
-bonus: $(NAME)
 
 clean:
 	@rm -f $(OBJ)
