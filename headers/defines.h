@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:44:55 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/03 13:39:01 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:20:43 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,37 @@
 # define COLORLESS "\033[39m"
 # define FONTLESS "\033[22;23m"
 # define RESETFONT "\033[0m"
+
+/*********************************************************/
+/*                                                       */
+/*                     GLOBAL LIMITS                     */
+/*             Here is a few limits preset               */
+/*                                                       */
+/*********************************************************/
+
+// Character
+# define CHAR_MAX 127
+# define CHAR_MIN -128
+# define UN_CHAR_MAX 255
+# define UN_CHAR_MIN 0
+
+// Short
+# define SHORT_MAX 32767
+# define SHORT_MIN -32768
+# define UN_SHORT_MAX 65535
+# define UN_SHORT_MIN 0
+
+// Integer
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
+# define UN_INT_MAX 4294967295
+# define UN_INT_MIN 0
+
+// Long
+# define LONG_MAX 9223372036854775807L
+# define LONG_MIN -9223372036854775807L
+# define UN_LONG_MAX 18446744073709551615L
+# define UN_LONG_MIN 0L
 
 /*********************************************************/
 /*                                                       */

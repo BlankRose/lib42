@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/04/05 11:32:23 by flcollar         ###   ########.fr        #
+#    Updated: 2022/04/06 10:59:58 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ STRING = $(addprefix $(STRING_FOLDER), $(STRING_FILES))
 
 # MEMORY MANIPULATIONS
 MEMORY_FOLDER = memory/
-MEMORY_FILES = allocations.c changeMem.c checkMem.c
+MEMORY_FILES = allocations.c changeMem.c checkMem.c free.c
 MEMORY = $(addprefix $(MEMORY_FOLDER), $(MEMORY_FILES))
 
 # CONVERTERS

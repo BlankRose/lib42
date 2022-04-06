@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/03 14:51:16 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/06 11:02:30 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -421,7 +421,7 @@ void		*ft_calloc(size_t count, size_t size);
 and free the old one
 Return: newly created string or NULL if allocation failed
 REQUIERD: malloc() and free() !*/
-char		*ft_realloc(char *prev, size_t n);
+void		*ft_realloc(void *prev, size_t n);
 
 /* Catch the address of the point P
 Return: address as a string or NULL if allocation failed
@@ -431,16 +431,16 @@ char		*ft_getaddress(void *p);
 /* Allows to free multiples strings at once
 Return: NULL
 REQUIERD: free() !*/
-char		*ft_free_multi(char *s1, char *s2);
+void		*ft_free_multi(void *s1, void *s2);
 
 /* Allows to free multiples N strings of an ARRAY of strings
 Return: NULL
 REQUIERD: free() !*/
-char		**ft_free_array(char **array, size_t n);
+void		**ft_free_array(void **array, size_t n);
 
 /* Check the length of the ARRAY
 Return: length of ARRAY */
-size_t		ft_array_len(char **array);
+size_t		ft_array_len(void **array);
 
 /*********************************************************/
 /*                                                       */

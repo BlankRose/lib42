@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 17:15:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/02 16:23:38 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/06 11:00:53 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	return (0);
 }
 
-size_t	ft_array_len(char **array)
+size_t	ft_array_len(void **array)
 {
 	size_t		i;
 

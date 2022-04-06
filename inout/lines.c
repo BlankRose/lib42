@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:02:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/25 14:47:01 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/06 11:02:00 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*read_next_line(char *res, int fd)
 	y = read(fd, temp, BUFFER_SIZE);
 	while (y > 0 && temp[0])
 	{
-		res = ft_realloc(res, ft_strlen(temp));
+		res = ft_realloc(res, ft_strlen(temp) + 1);
 		ft_strlcat(res, temp, ft_strlen(temp) + ft_strlen(res) + 1);
 		if (ft_contains(res, "\n"))
 			return (res);
@@ -43,13 +43,13 @@ static char	*catch_next_line(char *str)
 		y = ft_strlenlimit(str, '\n');
 		y += ft_contains(str, "\n");
 		ft_strlcpy(prev, &str[y], ft_strlen(str) - y + 1);
-		res = ft_realloc(res, ft_strlen(str));
+		res = ft_realloc(res, ft_strlen(str) + 1);
 		ft_strlcpy(res, str, y + 1);
 		free (str);
 	}
 	else if (prev[0])
 	{
-		res = ft_realloc(res, ft_strlen(prev));
+		res = ft_realloc(res, ft_strlen(prev) + 1);
 		ft_strlcat(res, prev, ft_strlen(prev) + ft_strlen(res) + 1);
 		ft_bzero(prev, BUFFER_SIZE + 1);
 	}

@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:13:41 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/02 16:01:19 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/06 10:20:49 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	ft_intoverflow(char *n)
 	if (sign > 0)
 		n++;
 	if (sign < 0)
-		cmp = ft_itoa(-__INT_MAX__ - 1);
+		cmp = ft_itoa(INT_MIN);
 	else
-		cmp = ft_itoa(__INT_MAX__);
+		cmp = ft_itoa(INT_MAX);
 	t = ft_overflow(n, cmp, sign);
 	free (cmp);
 	return (t);
@@ -67,9 +67,9 @@ int	ft_longoverflow(char *n)
 	if (sign > 0)
 		n++;
 	if (sign < 0)
-		cmp = ft_itoa_long(-__LONG_MAX__ - 1L);
+		cmp = ft_itoa_long(LONG_MIN);
 	else
-		cmp = ft_itoa_long(__LONG_MAX__);
+		cmp = ft_itoa_long(LONG_MAX);
 	t = ft_overflow(n, cmp, sign);
 	free (cmp);
 	return (t);
