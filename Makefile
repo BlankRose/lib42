@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/04/06 10:59:58 by flcollar         ###   ########.fr        #
+#    Updated: 2022/04/06 20:01:58 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ MEMORY = $(addprefix $(MEMORY_FOLDER), $(MEMORY_FILES))
 
 # CONVERTERS
 CONVERT_FOLDER = converters/
-CONVERT_FILES = itoa.c bases.c bases2.c misc.c
+CONVERT_FILES = itoa.c bases.c bases2.c strings.c misc.c
 CONVERT = $(addprefix $(CONVERT_FOLDER), $(CONVERT_FILES))
 
 # MATHEMATICS
@@ -58,7 +58,7 @@ DATA = $(addprefix $(DATA_FOLDER), $(DATA_FILES))
 
 # IN & OUT HANDLERS
 IN_OUT_FOLDER = inout/
-IN_OUT_FILES = lines.c printf.c write.c
+IN_OUT_FILES = lines.c print.c write.c
 IN_OUT = $(addprefix $(IN_OUT_FOLDER), $(IN_OUT_FILES))
 
 # ALL SOURCES TOGHETER

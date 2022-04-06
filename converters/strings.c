@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   strings.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 12:34:03 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/01 13:45:46 by flcollar         ###   ########.fr       */
+/*   Created: 2022/04/06 14:07:59 by flcollar          #+#    #+#             */
+/*   Updated: 2022/04/06 21:24:01 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,66 +30,54 @@ static char	*ft_convert_uint(const char *src, unsigned int arg)
 	return (str);
 }
 
-static int	ft_convert(const char *src, va_list *args, int fd)
+char	*ft_convert(const char *src, va_list *args)
 {
 	char	*str;
-	int		y;
 
 	str = 0;
 	if (src[0] == '%')
-		return (ft_putchar_fd('%', fd));
+		str = ft_chrdup('%');
 	else if (src[0] == 'c')
-		return (ft_putchar_fd(va_arg(*args, int), fd));
+		str = ft_chrdup(va_arg(*args, int));
 	else if (src[0] == 's')
-		return (ft_putstr_fd(va_arg(*args, char *), fd));
+	{
+		str = ft_strdup(va_arg(*args, char *));
+		if (!str)
+			str = ft_strdup("(null)");
+	}
 	else if (src[0] == 'd' || src[0] == 'i')
 		str = ft_itoa(va_arg(*args, int));
 	else if (src[0] == 'p')
 		str = ft_getaddress(va_arg(*args, void *));
 	if (ft_isset(src[0], "uxXob"))
 		str = ft_convert_uint(src, va_arg(*args, unsigned int));
-	if (!str)
-		return (-1);
-	y = ft_putstr_fd(str, fd);
-	free(str);
-	return (y);
+	return (str);
 }
 
-int	ft_printf(int fd, const char *s, ...)
+char	*ft_strconvert(const char *s, ...)
 {
 	t_vector3	v;
 	va_list		args;
+	char		*new;
+	char		*tmp;
 
-	if (!s)
-		return (-1);
-	v = ft_vector3_new(0, 0, 0);
 	va_start(args, s);
-	while (s[v.x])
+	v = ft_vector3_new(0, 0, 0);
+	new = 0;
+	while (s && s[v.x])
 	{
 		v.y = ft_strlenlimit(&s[v.x], '%');
-		v.z += ft_putnstr_fd(&s[v.x], fd, (size_t) v.y);
+		new = ft_strexpend(new, ft_substr(&s[v.x], 0, v.y), 0);
 		v.x += v.y;
 		if (ft_strchr(&s[v.x], '%'))
 		{
-			v.z += ft_convert(&s[++v.x], &args, fd);
+			tmp = ft_convert(&s[++v.x], &args);
+			if (tmp && tmp[0] == '%')
+				new = ft_strexpend(new, tmp, 0);
+			new = ft_strexpend(new, tmp, 1);
 			v.x++;
 		}
 	}
 	va_end(args);
-	return (v.z);
-}
-
-int	ft_printlst(int fd, const t_list *lst, const char *sep)
-{
-	size_t	i;
-
-	i = 0;
-	while (lst)
-	{
-		i += ft_putstr_fd((char *) lst->content, fd);
-		lst = lst->next;
-		if (lst)
-			i += ft_putstr_fd((char *) sep, fd);
-	}
-	return (i);
+	return (new);
 }

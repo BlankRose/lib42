@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 16:10:15 by flcollar          #+#    #+#             */
-/*   Updated: 2022/03/30 12:54:02 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:01:31 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	**ft_list2array(t_list *lst)
 	{
 		res[i] = ft_strdup(current->content);
 		if (!res[i])
-			return (ft_free_array(res, i));
+			return ((char **) ft_free_array((void **) res, i));
 		current = current->next;
 		i++;
 	}

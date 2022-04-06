@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/06 11:02:30 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/04/06 14:32:12 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,11 @@ size_t		ft_strlenlimitsetrev(const char *s, char *set);
 Return: difference between S1 and S2 */
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
+/* Create a clone of the char C (usually for char to string usage)
+Return: newly created string or NULL if allocation failed
+REQUIERD: malloc() !*/
+char		*ft_chrdup(const char c);
+
 /* Create a clone of the string S1
 Return: newly created string or NULL if allocation failed
 REQUIERD: malloc() !*/
@@ -187,6 +192,17 @@ void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 Return: newly created string or NULL if allocation failed
 REQUIERD: malloc() !*/
 char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+
+/* A simple converters which uses the first character of SRC and converts
+ARGS to their corresponding conversions sets by SRC
+Return: newly created string or NULL if allocation failed
+REQUIERD: malloc() and va_arg() !*/
+char		*ft_convert(const char *src, va_list *args);
+
+/* A function that creates a new string out of S, using some converters
+Return: newly created string or NULL if allocations failed
+REQUIERD: malloc(), free(), write() and va_arg() !*/
+char		*ft_strconvert(const char *s, ...);
 
 /*********************************************************/
 /*                                                       */
@@ -419,9 +435,15 @@ void		*ft_calloc(size_t count, size_t size);
 
 /* Extend the memory PREV by allocating a new and wider memory slot by N bytes
 and free the old one
-Return: newly created string or NULL if allocation failed
+Return: newly created memory or NULL if allocation failed
 REQUIERD: malloc() and free() !*/
 void		*ft_realloc(void *prev, size_t n);
+
+/* Extends the memory PREV by allocating a new and wider memory slot to fit
+TMP within PREV and free PREV and free TMP aswell if ISFREE is TRUE
+Return: newly created string or NULL if allocation failed
+REQUIERD: malloc() and free() !*/
+char		*ft_strexpend(char *prev, char *tmp, t_bool isfree);
 
 /* Catch the address of the point P
 Return: address as a string or NULL if allocation failed
