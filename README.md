@@ -11,7 +11,7 @@
 	<br>
 	<img alt="Libft" src="https://img.shields.io/static/v1?label=Libft+Mark&message=125+/+100&color=success&style=plastic"/>
 	<img alt="Libft" src="https://img.shields.io/static/v1?label=Printf+Mark&message=100+/+100&color=success&style=plastic"/>
-	<img alt="Libft" src="https://img.shields.io/static/v1?label=GNL+Mark&message=101+/+100&color=success&style=plastic"/>
+	<img alt="Libft" src="https://img.shields.io/static/v1?label=GNL+Mark&message=110+/+100&color=success&style=plastic"/>
 </p>
 
 <h2 style='font-size:160%; font-family:impact'>
