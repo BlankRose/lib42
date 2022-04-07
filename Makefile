@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/04/06 20:01:58 by flcollar         ###   ########.fr        #
+#    Updated: 2022/04/07 11:16:28 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar -rsc $(NAME) $(OBJ)
+	@printf "\033[32mThe library LIBFT has been loaded!\033[0m\n"
 
 clean:
 	@rm -f $(OBJ)
