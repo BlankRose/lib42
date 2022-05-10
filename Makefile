@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/10 11:16:45 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/10 13:55:53 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ MATHS = $(addprefix $(MATHS_FOLDER), $(MATHS_FILES))
 # DATA MANAGER
 DATA_FOLDER = data/
 DATA_FILES = list_create.c list_modify.c list_destroy.c list_fetch.c \
-			struct_init.c
+			struct_init.c sort.c
 DATA = $(addprefix $(DATA_FOLDER), $(DATA_FILES))
 
 # IN & OUT HANDLERS

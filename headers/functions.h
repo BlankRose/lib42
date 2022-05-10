@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/10 11:21:48 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:55:40 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,14 +214,24 @@ char		*ft_strconvert(const char *s, ...);
 /* Generates a new array of INTs containing all numbers between
 the specified MIN and MAX included.
 Return: newly created array of INTs
-REQUIERD: malloc() */
+REQUIERD: malloc() !*/
 int			*ft_range(int min, int max);
 
 /* Generates a new array of INTs containing all numbers between
 the specified MIN and MAX included in the reversed order
 Return: newly created array of INTs
-REQUIERD: malloc() */
+REQUIERD: malloc() !*/
 int			*ft_rangerev(int min, int max);
+
+/* Generates a new array of a single INT, containing NBR
+Return: newly created array of INT
+REQUIERD: malloc() !*/
+int			*ft_rangeone(int nbr);
+
+/* Generates a new array of INTs, containing every content of LST
+Return: newly created array of INTs
+REQUIERD: malloc() !*/
+int			*ft_lst2range(t_list *lst);
 
 /* Check the length of the number X but allows massive numbers
 Return: length of X */
@@ -343,6 +353,9 @@ t_vector3	ft_vector3_new(int x, int y, int z);
 Return: newly created vector2 */
 t_vector2	ft_vector2_new(int x, int y);
 
+/* Quickly sorts an ARRAY of N ints */
+void		ft_sort_array(int *array, size_t n);
+
 /* Creates a new list structure, initialized with CONTENT
 Return: newly created list
 REQUIERD: malloc() !*/
@@ -363,7 +376,7 @@ t_list		*ft_lstlocate(t_list *lst, size_t n);
 
 /* Count the amount of content in the chained list LST
 Return: length of LST */
-int			ft_lstsize(t_list *lst);
+size_t		ft_lstsize(t_list *lst);
 
 /* Add the NEW list in the chained list LST at first position 
 and pass the pointer LST back to NEW */
@@ -527,7 +540,8 @@ Return: amount of caracters printed or -1 if an error occured
 REQUIERD: malloc(), free(), write() and va_arg() !*/
 int			ft_printf(int fd, const char *s, ...);
 
-/* Print out the whole LST to the output FD
+/* Print out the whole LST to the output FD, using SEP to seperate each
+each output
 Return: amount of characters written
 REQUIERD: write() !*/
 int			ft_printlst(int fd, const t_list *lst, const char *sep);

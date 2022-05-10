@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:55:54 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/10 10:59:08 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:46:06 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_lstupdate(t_list *lst, void (*del)(void *), void *new)
 {
 	if (!lst)
 		return ;
-	if (del)
+	if (del && lst->content)
 		del(lst->content);
 	lst->content = new;
 }
