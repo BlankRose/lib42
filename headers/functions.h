@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/10 10:58:43 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/10 11:21:48 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,10 +212,16 @@ char		*ft_strconvert(const char *s, ...);
 /*********************************************************/
 
 /* Generates a new array of INTs containing all numbers between
-the specified MIN and MAX included
+the specified MIN and MAX included.
 Return: newly created array of INTs
 REQUIERD: malloc() */
 int			*ft_range(int min, int max);
+
+/* Generates a new array of INTs containing all numbers between
+the specified MIN and MAX included in the reversed order
+Return: newly created array of INTs
+REQUIERD: malloc() */
+int			*ft_rangerev(int min, int max);
 
 /* Check the length of the number X but allows massive numbers
 Return: length of X */
