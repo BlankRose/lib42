@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:55:54 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/05 11:13:37 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/10 10:59:08 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,13 @@ t_list	*ft_lstmap_arg(t_list *lst, void *(*f)(void *, void *),
 		lst = lst->next;
 	}
 	return (new);
+}
+
+void	ft_lstupdate(t_list *lst, void (*del)(void *), void *new)
+{
+	if (!lst)
+		return ;
+	if (del)
+		del(lst->content);
+	lst->content = new;
 }

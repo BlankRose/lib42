@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_destroy.c                                     :+:      :+:    :+:   */
+/*   range.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 15:14:43 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/10 09:24:00 by flcollar         ###   ########.fr       */
+/*   Created: 2022/05/10 09:48:49 by flcollar          #+#    #+#             */
+/*   Updated: 2022/05/10 09:51:54 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+int	*ft_range(int min, int max)
 {
-	if (!lst)
-		return ;
-	if (del)
-		del(lst->content);
-	free(lst);
-}
+	int		*array;
+	size_t	i;
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*current;
-	t_list	*next;
-
-	if (!lst)
-		return ;
-	current = *lst;
-	while (current)
-	{
-		next = current->next;
-		ft_lstdelone(current, del);
-		current = next;
-	}
-	*lst = 0;
+	if (min > max)
+		return (0);
+	i = max - min;
+	array = (int *) ft_calloc(i + 1, sizeof(int));
+	while (min <= max && i >= 0)
+		array[i--] = max--;
+	return (array);
 }
