@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/10 13:55:40 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:35:48 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,10 @@ int			ft_max(int x, int max);
 /* Calculates N to the power of POW
 Return: Result of N ^ POW */
 int			ft_power(int n, int pow);
+
+/* Find the Greatest Common Divider between X and Y
+Return: found value */
+t_uint		ft_get_gcd(int x, int y);
 
 /* Checks wether the string N could overflow within an 'int'
 Return: TRUE (1) or FALSE (0) */

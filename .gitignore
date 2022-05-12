@@ -10,3 +10,4 @@ main.c
 *.out*
 test*
 test
+.DS_Store
