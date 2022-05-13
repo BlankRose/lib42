@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/11 17:35:48 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:54:24 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,6 +373,12 @@ t_list		*ft_lstdup(t_list *lst, void *(*f) (void *));
 /* Fetch the last list content from the chain LST
 Return: address of last list */
 t_list		*ft_lstlast(t_list *lst);
+
+/* Creates a list of N entries based of an ARRAY. Setting N to 0 will
+cause to keep on creating lists until it find a NULL value
+Return: newly created list
+REQUIERD: malloc() !*/
+t_list		*ft_array2lst(void **array, size_t n);
 
 /* Locate the list structure in LST at index N
 Return: located LST or NULL if none exists */
