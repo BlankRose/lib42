@@ -6,13 +6,13 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:55:46 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/15 20:08:33 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:47:52 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_btree_new(void *content)
+t_btree	*ft_btree_new(void *content)
 {
 	t_btree		*tree;
 
