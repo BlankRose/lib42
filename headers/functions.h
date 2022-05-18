@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:43:07 by flcollar          #+#    #+#             */
-/*   Updated: 2022/05/13 15:54:24 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/17 21:38:52 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,12 @@ char		*ft_substr(const char *s, unsigned int start, size_t len);
 Return: newly created string or NULL if allocation failed
 REQUIERD: malloc() ! */
 char		*ft_strjoin(const char *s1, const char *s2);
+
+/* Joins togheter multiple strings into a new string
+Return: newly created string or NULL if allocation failed
+CAUTION: Should end with NULL string !
+REQUIERD: malloc(), free() and va_arg() !*/
+char		*ft_strjoin_multi(const char *base, ...);
 
 /* Create a clone of the string S1, but removes every characters in SET at
 the beginning and the end of the string

@@ -6,7 +6,7 @@
 #    By: flcollar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/23 14:48:03 by flcollar          #+#    #+#              #
-#    Updated: 2022/05/11 17:15:54 by flcollar         ###   ########.fr        #
+#    Updated: 2022/05/18 12:38:29 by flcollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ DANGER = $(FLAGS) -fsanitize=address -g3
 BUFFER_SIZE = 10000
 DEFINES = -D BUFFER_SIZE=$(BUFFER_SIZE)
 
+TEST_FILE = ./main.c
+TEST_OUT = test
+
 #==--------------------------------------==#
 # *                                      * #
 #             LISTING SOURCES              #
@@ -32,7 +35,8 @@ DEFINES = -D BUFFER_SIZE=$(BUFFER_SIZE)
 # STRING MANIPULATIONS
 STRING_FOLDER = strings/
 STRING_FILES = is_alphanum.c is_special.c is_set.c set_char.c set_string.c \
-			   duplicate.c split.c compare.c strLength.c applyFunc.c search.c
+			   duplicate.c split.c compare.c strLength.c applyFunc.c search.c \
+			   join.c
 STRING = $(addprefix $(STRING_FOLDER), $(STRING_FILES))
 
 # MEMORY MANIPULATIONS
@@ -88,4 +92,9 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: all
+	@gcc $(DANGER) -L. -lft -o $(TEST_OUT) $(TEST_FILE)
+	@./$(TEST_OUT)
+	@rm -Rf $(TEST_OUT) $(TEST_OUT).dSYM
+
+.PHONY: all clean fclean re test

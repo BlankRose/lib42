@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:44:41 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/01 15:50:42 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:05:21 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,13 @@ typedef struct s_list {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+/* Binary tree structure
+Variables: (void*) content, (s_btree*) left, right */
+typedef struct s_btree {
+	void			*content;
+	struct s_btree	*left;
+	struct s_btree	*right;
+}	t_btree;
 
 #endif
