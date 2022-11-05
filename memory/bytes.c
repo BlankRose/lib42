@@ -14,6 +14,8 @@
 
 t_bool	ft_hasbit(t_byte byte, int n)
 {
+	if (n >= 8)
+		return (0);
 	if ((byte >> n) & 1)
 		return (1);
 	return (0);
@@ -48,6 +50,6 @@ t_byte		ft_flipbyte(t_byte byte)
 
 	i = 0;
 	while (i < 8)
-		byte = ft_flipbit(byte, i);
+		byte = ft_flipbit(byte, i++);
 	return (byte);
 }
