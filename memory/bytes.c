@@ -12,33 +12,42 @@
 
 #include "../libft.h"
 
-t_bool	ft_hasbit(t_byte byte, int flag)
+t_bool	ft_hasbit(t_byte byte, int n)
 {
-	if ((byte >> flag) & 1)
+	if ((byte >> n) & 1)
 		return (1);
 	return (0);
 }
 
-int	ft_setbit(t_byte byte, int flag)
+t_byte	ft_setbit(t_byte byte, int n)
 {
-	return (byte | (1 << flag));
+	if (n >= 8)
+		return (byte);
+	return (byte | (1 << n));
 }
 
-int	ft_delbit(t_byte byte, int flag)
+t_byte	ft_unsetbit(t_byte byte, int n)
 {
-	if (ft_hasbyte(byte, flag))
-		return (byte ^ (1 << flag));
+	if (ft_hasbit(byte, n))
+		return (byte ^ (1 << n));
 	return (byte);
 }
 
-int	ft_flipbits(t_byte byte, int flag)
+t_byte	ft_flipbit(t_byte byte, int n)
 {
-	size_t	i;
-	int		res;
+	if (n >= 8)
+		return (byte);
+	if (ft_hasbit(byte, n))
+		return (byte ^ (1 << n));
+	return (byte | (1 << n));
+}
+
+t_byte		ft_flipbyte(t_byte byte)
+{
+	t_byte	i;
 
 	i = 0;
-	res = 0;
-	while (i < 32)
-		res = res | (byte ^ (1 << i));
-	return (res);
+	while (i < 8)
+		byte = ft_flipbit(byte, i);
+	return (byte);
 }

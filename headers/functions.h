@@ -509,6 +509,28 @@ void		**ft_free_array(void **array, size_t n);
 Return: length of ARRAY */
 size_t		ft_array_len(void **array);
 
+/* Checks if the specified n-th bit of the byte is true or false 
+Return: 1 (TRUE) or 0 (FALSE) */
+t_bool		ft_hasbit(t_byte byte, int n);
+
+/* Returns the new byte with the n-th bit set to true
+Return: new byte */
+t_byte		ft_setbit(t_byte byte, int n);
+
+/* Returns the new byte with the n-th bit set to false
+Return: new byte */
+t_byte		ft_unsetbit(t_byte byte, int n);
+
+/* Returns the new byte with the n-th bit flipped
+(will be set to true when false and false when true)
+Return: new byte */
+t_byte		ft_flipbit(t_byte byte, int n);
+
+/* Returns the new byte with the every bits flipped
+(each will be set to true when false and false when true)
+Return: new byte */
+t_byte		ft_flipbyte(t_byte byte);
+
 /*********************************************************/
 /*                                                       */
 /*                  IN & OUT HANDLER                     */

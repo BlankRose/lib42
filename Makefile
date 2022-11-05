@@ -65,7 +65,7 @@ STRING = $(addprefix $(STRING_FOLDER), $(STRING_FILES))
 
 # MEMORY MANIPULATIONS
 MEMORY_FOLDER = memory$(FOLD)
-MEMORY_FILES = allocations changeMem checkMem free
+MEMORY_FILES = allocations changeMem checkMem free bytes
 MEMORY = $(addprefix $(MEMORY_FOLDER), $(MEMORY_FILES))
 
 # CONVERTERS
@@ -166,9 +166,10 @@ endif
 
 # BASIC MACROS
 ifneq ($(GENERIC_FOLDER), )
-	GENERIC_FOLDER	+= $(FOLD)
+	SRC		+= $(foreach file, $(GENERIC_FILES), $(GENERIC_FOLDER)$(FOLD)$(file)$(FILE_EXTENSION))
+else
+	SRC 	+= $(foreach file, $(GENERIC_FILES), $(file)$(FILE_EXTENSION))
 endif
-SRC 		+= $(foreach file, $(GENERIC_FILES), $(GENERIC_FOLDER)$(file)$(FILE_EXTENSION))
 OBJ			= $(SRC:$(FILE_EXTENSION)=.o)
 LINKS		= $(EXT_BINARIES) $(LINKER_PARAMS)
 FLAGS		= $(addprefix -L, $(LIB_FOLDER)) \
