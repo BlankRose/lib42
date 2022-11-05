@@ -20,10 +20,10 @@
 
 # EXECUTABLE
 # Defines the executable's name and the arguments for 'make run/test'
+# Add .a to the NAME to make a library instead of a programm
 
 NAME			= libft.a
 ARGUMENTS		= 
-
 
 # COMPILATION
 # Configurations for compilation
@@ -34,14 +34,27 @@ LIB_FILES		=
 LIB_FOLDER		= 
 INCLUDES		= 
 LINKER_PARAMS	= 
-DEFINES			= BUFFER_SIZE=10000
+DEFINES			= 
 COMPILE_PARAMS	= -Wall -Werror -Wextra -g3
 ifneq ($(OS), Windows_NT)
 	LINKER_PARAMS += -fsanitize=address
 endif
 
-# SOURCE CODE
-# List of all source codes
+# DEPENDENCIES
+# Specify which subfolder to "make" and clone/pull needed repos
+
+EXT_FOLDER		= 
+REQUIERD		= 
+REPOSITORIES	= 
+EXT_BINARIES	= 
+
+
+
+#==--------------------------------------==#
+# *                                      * #
+#               SOURCE FILES               #
+# *                                      * #
+#==--------------------------------------==#
 
 # STRING MANIPULATIONS
 STRING_FOLDER = strings$(FOLD)
@@ -83,6 +96,61 @@ GENERIC_FOLDER	=
 
 #==--------------------------------------==#
 # *                                      * #
+#             DISPLAY MESSAGES             #
+# *                                      * #
+#==--------------------------------------==#
+
+# SYNTAX SEQUENCES
+ESC			= 
+ifneq ($(OS), Windows_NT)
+	NEWLINE	= \n
+	QUOTE	= "
+	BREAK	= \r
+endif
+RED			= $(ESC)[0;31m
+GRN			= $(ESC)[0;32m
+YLW			= $(ESC)[0;33m
+BLU			= $(ESC)[0;34m
+NUL			= $(ESC)[0m
+END			= $(ESC)[0m$(NEWLINE)
+BACK		= $(ESC)[2K$(BREAK)
+
+# DISPLAY ICONS
+ifneq ($(OS), Windows_NT)
+	ICO_PROCESS	= ƒ
+	ICO_SUCCESS	= √
+	ICO_FAILURE	= ø
+endif
+
+# GENERAL COMBINAISONS
+MSG_WORK	= $(QUOTE)$(BACK)$(YLW)$(ICO_PROCESS)
+MSG_GOOD	= $(QUOTE)$(BACK)$(GRN)$(ICO_SUCCESS)
+MSG_ERROR	= $(QUOTE)$(BACK)$(RED)$(ICO_FAILURE)
+MSG_WRET	= $(END)$(QUOTE)
+MSG_NRET	= $(NUL)$(QUOTE)
+
+# COMPILING MESSAGES
+GET_NEEDING	= $(MSG_WORK) Fetching dependencies ...$(MSG_NRET)
+CMP_NEEDING	= $(MSG_WORK) Compiling dependencies ...$(MSG_NRET)
+CMP_WORKING	= $(MSG_WORK) Compiling $@ ...$(MSG_NRET)
+LIB_SUCCESS	= $(MSG_GOOD) The library $(NAME) has been compiled successfully!$(MSG_WRET)
+LIB_FAILURE	= $(MSG_ERROR) The library $(NAME) failed to compile!$(MSG_WRET)
+CMP_SUCCESS	= $(MSG_GOOD) The programm $(NAME) has been compiled successfully!$(MSG_WRET)
+CMP_FAILURE	= $(MSG_ERROR) The programm $(NAME) failed to compile!$(MSG_WRET)
+
+# CLEARING MESSAGES
+CLR_NEEDING	= $(MSG_WORK) Cleaning dependencies ...$(MSG_NRET)
+CLR_WORKING	= $(MSG_WORK) Cleaning files ...$(MSG_NRET)
+CLR_SUCCESS	= $(MSG_GOOD) Objects has been cleared!$(MSG_WRET)
+CLR_FAILURE	= $(MSG_ERROR) Objects couldn't be cleared!$(MSG_WRET)
+
+# MISC MESSAGES
+NON_COMPAT	= $(MSG_ERROR) This rule is not compatible yet with your OS $(OS)$(MSG_WRET)
+
+
+
+#==--------------------------------------==#
+# *                                      * #
 #              SPECIAL MACROS              #
 # *                                      * #
 #==--------------------------------------==#
@@ -98,9 +166,9 @@ endif
 
 # BASIC MACROS
 ifneq ($(GENERIC_FOLDER), )
-	GENERIC_FOLDER += $(FOLD)
+	GENERIC_FOLDER	+= $(FOLD)
 endif
-SRC 		= $(foreach file, $(GENERIC_FILES), $(GENERIC_FOLDER)$(file)$(FILE_EXTENSION))
+SRC 		+= $(foreach file, $(GENERIC_FILES), $(GENERIC_FOLDER)$(file)$(FILE_EXTENSION))
 OBJ			= $(SRC:$(FILE_EXTENSION)=.o)
 LINKS		= $(EXT_BINARIES) $(LINKER_PARAMS)
 FLAGS		= $(addprefix -L, $(LIB_FOLDER)) \
@@ -127,11 +195,27 @@ CONTINUE	= $(SILENT) $(NOERR)
 ifeq ($(OS), Windows_NT)
 	CMD_PRINT	= echo
 	CMD_CLEAR	= del /f /q
-	CMD_EXE		= .exe
+	ifneq ($(suffix $(NAME)), .a)
+		CMD_EXE		= .exe
+	endif
+	ifneq ($(EXT_FOLDER), )
+		GO_EXT		= ((mkdir $(EXT_FOLDER) $(SILENT) && cd $(EXT_FOLDER) $(SILENT)) || cd $(EXT_FOLDER) $(SILENT))
+	endif
+	GET_REPOS		= $(GO_EXT) $(foreach rep, $(REPOSITORIES), && (git clone $(rep) $(SILENT) || git pull $(r) $(SILENT)) )
+	MAKE_REQUIERD	= $(GO_EXT) $(foreach dir, $(REQUIERD), && make -sC $(dir) )
+	MAKE_CLEAR		= $(GO_EXT) $(foreach dir, $(REQUIERD), && make fclean -sC $(dir) )
+
 else
 	CMD_PRINT	= printf
 	CMD_CLEAR	= rm -f
+	ifneq ($(EXT_FOLDER), )
+		GO_EXT		= mkdir $(EXT_FOLDER) $(SILENT); cd $(EXT_FOLDER) $(SILENT);
+	endif
+	GET_REPOS		= $(GO_EXT) $(foreach repo, $(REPOSITORIES), git clone $(repo) $(SILENT); )
+	MAKE_REQUIERD	= $(GO_EXT) $(foreach folder, $(REQUIERD), make -sC $(folder) $(SILENT); )
+	MAKE_CLEAR		= $(GO_EXT) $(foreach folder, $(REQUIERD), make fclean -sC $(folder) $(SILENT); )
 endif
+CMD_LIB			= ar -rc
 
 # DEFAULT COMPILER SELECTOR
 ifeq ($(COMPILER), default)
@@ -143,52 +227,6 @@ ifeq ($(COMPILER), default)
 		COMPILER = gcc
 	endif
 endif
-
-
-
-#==--------------------------------------==#
-# *                                      * #
-#             DISPLAY MESSAGES             #
-# *                                      * #
-#==--------------------------------------==#
-
-# SYNTAX SEQUENCES
-ESC			= 
-ifneq ($(OS), Windows_NT)
-	NEWLINE	= \n
-	QUOTE	= "
-	BREAK	= \r
-endif
-RED			= $(ESC)[0;31m
-GRN			= $(ESC)[0;32m
-YLW			= $(ESC)[0;33m
-BLU			= $(ESC)[0;34m
-NUL			= $(ESC)[0m
-END			= $(ESC)[0m$(NEWLINE)
-BACK		= $(ESC)[2K$(BREAK)
-
-# GENERAL COMBINAISONS
-MSG_WORK	= $(QUOTE)$(BACK)$(YLW)
-MSG_GOOD	= $(QUOTE)$(BACK)$(GRN)
-MSG_ERROR	= $(QUOTE)$(BACK)$(RED)
-MSG_WRET	= $(END)$(QUOTE)
-MSG_NRET	= $(NUL)$(QUOTE)
-
-# COMPILING MESSAGES
-GET_NEEDING	= $(MSG_WORK)ƒ Fetching dependencies ...$(MSG_NRET)
-CMP_NEEDING	= $(MSG_WORK)ƒ Compiling dependencies ...$(MSG_NRET)
-CMP_WORKING	= $(MSG_WORK)ƒ Compiling $@ ...$(MSG_NRET)
-CMP_SUCCESS	= $(MSG_GOOD)√ The library $(NAME) has been compiled successfully!$(MSG_WRET)
-CMP_FAILURE	= $(MSG_ERROR)ø The library $(NAME) failed to compile!$(MSG_WRET)
-
-# CLEARING MESSAGES
-CLR_NEEDING	= $(MSG_WORK)ƒ Cleaning dependencies ...$(MSG_NRET)
-CLR_WORKING	= $(MSG_WORK)ƒ Cleaning files ...$(MSG_NRET)
-CLR_SUCCESS	= $(MSG_GOOD)√ Objects has been cleared!$(MSG_WRET)
-CLR_FAILURE	= $(MSG_ERROR)ø Objects couldn't be cleared!$(MSG_WRET)
-
-# MISC MESSAGES
-NON_COMPAT	= $(MSG_ERROR)ø This rule is not compatible yet with your OS $(OS)$(MSG_WRET)
 
 
 
@@ -222,8 +260,13 @@ endif
 
 $(NAME): dependencies $(OBJ)
 	@$(CMD_PRINT) $(CMP_WORKING)
-	@ar -rsc $(NAME) $(OBJ)
+ifeq ($(suffix $(NAME)), .a)
+	@$(CMD_LIB) $(NAME) $(OBJ)
+	@$(CMD_PRINT) $(LIB_SUCCESS)
+else
+	@$(COMPILER) -o $(NAME) $(OBJ) $(LINKS) $(FLAGS)
 	@$(CMD_PRINT) $(CMP_SUCCESS)
+endif
 
 c: clean
 clean:
@@ -233,7 +276,21 @@ clean:
 
 fc: fclean
 fclean: clean
-	@$(CMD_CLEAR) $(NAME) $(SILENT)
+	@$(CMD_CLEAR) $(NAME)$(CMD_EXE)
+
+lc: libclean
+libclean:
+	@$(CMD_PRINT) $(CLR_NEEDING)
+	@$(MAKE_CLEAR)
+
+ifneq ($(NAME), run)
+r: run
+run: all
+else
+t: test
+test: all
+endif
+	@./$(NAME) $(ARGUMENTS)
 
 re: remake
 remake: fclean all
