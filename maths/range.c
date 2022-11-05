@@ -26,7 +26,7 @@ int	*ft_range(int min, int max)
 	}
 	i = max - min;
 	array = (int *) ft_calloc(i + 1, sizeof(int));
-	while (array && min <= max && i >= 0)
+	while (array && min <= max)
 		array[i--] = max--;
 	return (array);
 }
@@ -45,7 +45,7 @@ int	*ft_rangerev(int min, int max)
 	}
 	i = max - min;
 	array = (int *) ft_calloc(i + 1, sizeof(int));
-	while (array && min <= max && i >= 0)
+	while (array && min <= max)
 		array[i--] = min++;
 	return (array);
 }

@@ -31,29 +31,29 @@ t_list	*ft_lstdup(t_list *lst, void *(*f) (void *))
 	return (ft_lstnew(f(lst->content)));
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *n)
 {
-	if (!new)
+	if (!n)
 		return ;
 	if (!*lst)
 	{
-		*lst = new;
+		*lst = n;
 		return ;
 	}
-	new->next = *lst;
-	*lst = new;
+	n->next = *lst;
+	*lst = n;
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *n)
 {
-	if (!new)
+	if (!n)
 		return ;
 	if (!*lst)
 	{
-		*lst = new;
+		*lst = n;
 		return ;
 	}
-	ft_lstlast(*lst)->next = new;
+	ft_lstlast(*lst)->next = n;
 }
 
 t_list	*ft_array2lst(void **array, size_t n)

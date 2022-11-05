@@ -22,6 +22,7 @@
 
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdint.h>
 
 # ifdef _WIN32
 #  include <io.h>

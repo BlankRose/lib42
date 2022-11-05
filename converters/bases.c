@@ -33,18 +33,13 @@ unsigned int	ft_base2dec(char *s, char *base)
 	size_t			len;
 	size_t			i;
 	unsigned int	r;
-	int				sign;
 
 	len = ft_checkbase(base);
 	if (!s || len < 2)
 		return (0);
 	i = 0;
-	while (ft_isspace(s[i]))
+	while (ft_isspace(s[i]) || ft_issign(s[i]))
 		i++;
-	sign = 1;
-	while (ft_issign(s[i]))
-		if (s[i++] == '-')
-			sign = -1;
 	r = 0;
 	while (ft_isset(s[i], base))
 		r = (r * len) + ft_strlenlimit(base, s[i++]);
@@ -77,11 +72,6 @@ char	*ft_dec2base(unsigned int n, char *base)
 	v = ft_vector3_new(ft_checkbase(base), 1, 0);
 	if (v.x < 2)
 		return (0);
-	if (n < 0)
-	{
-		v.y = -v.y;
-		v.z++;
-	}
 	v.z += ft_nbrlen_base(n, v.x);
 	return (ft_dec2base2(v, (unsigned long long) n, base));
 }
@@ -91,11 +81,11 @@ char	*ft_ptr2base(void *x, char *base)
 	unsigned long long	nb;
 	t_vector3			v;
 
-	nb = (unsigned long long) x;
+	nb = (uintptr_t) x;
 	v = ft_vector3_new(ft_checkbase(base), 1, 0);
 	if (v.x < 2)
 		return (0);
-	if (x < 0)
+	if ((intptr_t) x < 0)
 	{
 		v.y = -v.y;
 		v.z++;

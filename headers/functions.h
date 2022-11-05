@@ -396,10 +396,10 @@ size_t		ft_lstsize(t_list *lst);
 
 /* Add the NEW list in the chained list LST at first position 
 and pass the pointer LST back to NEW */
-void		ft_lstadd_front(t_list **lst, t_list *new);
+void		ft_lstadd_front(t_list **lst, t_list *n);
 
 /* Add the NEW list in the chained list LST at last position */
-void		ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstadd_back(t_list **lst, t_list *n);
 
 /* Iterates accross a list, starting fron LST and apply a function F
 on each content */
@@ -424,7 +424,7 @@ t_list		*ft_lstmap_arg(t_list *lst, void *(*f)(void *, void *),
 
 /* Update the content of LST by using DEL to clear its old content and
 remplaces it with the NEW content */
-void		ft_lstupdate(t_list *lst, void (*del)(void *), void *new);
+void		ft_lstupdate(t_list *lst, void (*del)(void *), void *n);
 
 /* Clear the element LST using the function DEL to clear its content properly
 REQUIERD: free() !*/
