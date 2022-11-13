@@ -6,7 +6,7 @@
 /*   By: flcollar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 12:02:16 by flcollar          #+#    #+#             */
-/*   Updated: 2022/04/06 11:02:00 by flcollar         ###   ########.fr       */
+/*   Updated: 2022/11/13 13:38:40 by flcollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static char	*read_next_line(char *res, int fd)
 	return (res);
 }
 
-static char	*catch_next_line(char *str)
+static char	*catch_next_line(char *str, int fd)
 {
-	static char		prev[BUFFER_SIZE + 1];
+	static char		prev[MAX_FD][BUFFER_SIZE + 1];
 	char			*res;
 	size_t			y;
 
@@ -42,16 +42,16 @@ static char	*catch_next_line(char *str)
 	{
 		y = ft_strlenlimit(str, '\n');
 		y += ft_contains(str, "\n");
-		ft_strlcpy(prev, &str[y], ft_strlen(str) - y + 1);
+		ft_strlcpy(prev[fd], &str[y], ft_strlen(str) - y + 1);
 		res = ft_realloc(res, ft_strlen(str) + 1);
 		ft_strlcpy(res, str, y + 1);
 		free (str);
 	}
-	else if (prev[0])
+	else if (prev[fd][0])
 	{
-		res = ft_realloc(res, ft_strlen(prev) + 1);
-		ft_strlcat(res, prev, ft_strlen(prev) + ft_strlen(res) + 1);
-		ft_bzero(prev, BUFFER_SIZE + 1);
+		res = ft_realloc(res, ft_strlen(prev[fd]) + 1);
+		ft_strlcat(res, prev[fd], ft_strlen(prev[fd]) + ft_strlen(res) + 1);
+		ft_bzero(prev[fd], BUFFER_SIZE + 1);
 	}
 	return (res);
 }
@@ -63,10 +63,10 @@ char	*get_next_line(int fd)
 	res = 0;
 	if (fd < 0)
 		return (0);
-	res = catch_next_line(res);
+	res = catch_next_line(res, fd);
 	if (!ft_contains(res, "\n"))
 		res = read_next_line(res, fd);
-	res = catch_next_line(res);
+	res = catch_next_line(res, fd);
 	return (res);
 }
 
